@@ -120,7 +120,31 @@ export default function Portfolio() {
           </a>
         </div>
       </section>
-
+      {/* Footer */}
+      <footer className="relative z-10 bg-pink-600 text-white py-12">
+        <div className="container px-4 mx-auto">
+          <div className="flex flex-col items-center gap-6">
+            <h2 className="text-2xl font-bold">JoseT</h2>
+            <div className="flex space-x-6">
+              <a href="#" className="hover:opacity-75 transition-opacity">
+                <Github size={24} />
+                <span className="sr-only">GitHub</span>
+              </a>
+              <a href="#" className="hover:opacity-75 transition-opacity">
+                <Linkedin size={24} />
+                <span className="sr-only">LinkedIn</span>
+              </a>
+              <a href="#" className="hover:opacity-75 transition-opacity">
+                <FileText size={24} />
+                <span className="sr-only">Resume</span>
+              </a>
+            </div>
+            <p className="text-sm opacity-90">
+              Copyright © {new Date().getFullYear()} JoseT. Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
