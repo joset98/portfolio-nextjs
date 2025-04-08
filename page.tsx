@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Github, Linkedin, FileText, Sun, Moon, ArrowRight } from "lucide-react"
+import { Github, Linkedin, FileText, Sun, Moon, ArrowRight, ArrowUpRight, Download } from "lucide-react"
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false)
@@ -104,7 +104,7 @@ export default function Portfolio() {
           />
         </div>
         <h2 className="mb-2 text-2xl font-medium">Hey, Soy Jose</h2>
-        <h1 className="mb-6 text-5xl font-bold tracking-tight">DESARROLLADOR WEB</h1>
+        <h1 className="mb-6 text-6xl font-bold tracking-tight">DESARROLLADOR WEB</h1>
         <p className="max-w-lg mb-8 text-gray-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua.
@@ -134,7 +134,7 @@ export default function Portfolio() {
       {/* Experience Section */}
       <section id="experiencia" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">Experiencia</h2>
+          <h2 className="mb-8 text-5xl font-bold text-center">Experiencia</h2>
           <p className="max-w-3xl mx-auto mb-12 text-center text-muted-foreground">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
@@ -229,7 +229,7 @@ export default function Portfolio() {
       {/* Projects Section */}
       <section id="proyectos" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">Ultimos Proyectos</h2>
+          <h2 className="mb-8 text-5xl font-bold text-center">Ultimos Proyectos</h2>
 
           {/* First Project */}
           <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
@@ -250,14 +250,18 @@ export default function Portfolio() {
                 ex ea commodo consequat.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="inline-flex items-center px-4 py-2 bg-pink-600 text-white rounded-full">
+                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full">
+                  <ArrowUpRight size={25} />
                   <span className="mr-2">Visitar</span>
                 </a>
                 <a
                   href="#"
-                  className="inline-flex items-center px-4 py-2 border border-pink-600 text-pink-600 rounded-full"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full"
                 >
-                  <span className="mr-2">Ver Código</span>
+                  <Github size={25} />
+                  <span className="mr-2">
+                    Ver Código
+                  </span>
                 </a>
               </div>
             </div>
@@ -282,14 +286,18 @@ export default function Portfolio() {
                 ex ea commodo consequat.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="inline-flex items-center px-4 py-2 bg-pink-600 text-white rounded-full">
+                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full">
+                  <ArrowUpRight size={25} />
                   <span className="mr-2">Visitar</span>
                 </a>
                 <a
                   href="#"
-                  className="inline-flex items-center px-4 py-2 border border-pink-600 text-pink-600 rounded-full"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full"
                 >
-                  <span className="mr-2">Ver Código</span>
+                  <Github size={25} />
+                  <span className="mr-2">
+                    Ver Código
+                  </span>
                 </a>
               </div>
             </div>
@@ -300,7 +308,7 @@ export default function Portfolio() {
       {/* Skills Section */}
       <section id="skills" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">Skills</h2>
+          <h2 className="mb-8 text-5xl font-bold text-center">Skills</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {/* Frontend Skills */}
@@ -417,7 +425,7 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="sobre-mi" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">Sobre mí</h2>
+          <h2 className="mb-8 text-5xl font-bold text-center">Sobre mí</h2>
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
@@ -432,8 +440,18 @@ export default function Portfolio() {
                 dolor sit amet.
               </p>
               <div className="flex gap-4">
-                <button className="px-6 py-3 text-white bg-pink-600 rounded-full">Descargar CV</button>
-                <button className="px-6 py-3 text-pink-600 border border-pink-600 rounded-full">Contactar</button>
+                <button className="flex justify-between items-center gap-2 px-6 py-3 text-white bg-primary bg-pink-600 rounded-full">
+                  <div>
+                    <Download size={25} />
+                  </div>
+                  Descargar CV
+                </button>
+                <button className="flex justify-between gap-2 px-8 py-3 text-primary text-pink-600 border border-primary border-pink-600 rounded-full">
+                  <div>
+                    <ArrowRight />
+                  </div>
+                  Contactar
+                </button>
               </div>
             </div>
 
@@ -462,7 +480,7 @@ export default function Portfolio() {
       {/* Contact Section */}
       <section id="contacto" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">Contacto</h2>
+          <h2 className="mb-8 text-5xl font-bold text-center">Contacto</h2>
           <p className="max-w-xl mx-auto text-center text-gray-600 mb-12">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
@@ -475,14 +493,14 @@ export default function Portfolio() {
                   <input
                     type="text"
                     placeholder="Nombre"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-pink-600 focus:ring-1 focus:ring-pink-600 outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:border-primary outline-none transition-colors"
                   />
                 </div>
                 <div>
                   <input
                     type="email"
                     placeholder="Email"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-pink-600 focus:ring-1 focus:ring-pink-600 outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:border-primary outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -490,14 +508,17 @@ export default function Portfolio() {
                 <textarea
                   placeholder="Mensaje"
                   rows={6}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-pink-600 focus:ring-1 focus:ring-pink-600 outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:border-primary outline-none transition-colors resize-none"
                 ></textarea>
               </div>
-              <div className="text-center">
+              <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="px-8 py-3 text-white bg-pink-600 rounded-full hover:bg-pink-700 transition-colors"
+                  className="flex justify-between gap-2 px-8 py-3 text-white bg-primary bg-pink-600 rounded-full hover:bg-pink-700 transition-colors"
                 >
+                  <div>
+                    <ArrowRight />
+                  </div>
                   Contáctame
                 </button>
               </div>
@@ -507,7 +528,7 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-pink-600 text-white py-12">
+      <footer className="relative z-10 bg-primary text-white py-12">
         <div className="container px-4 mx-auto">
           <div className="flex flex-col items-center gap-6">
             <h2 className="text-2xl font-bold">JoseT</h2>
