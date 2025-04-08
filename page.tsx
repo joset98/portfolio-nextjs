@@ -121,6 +121,288 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section id="experiencia" className="relative z-10 py-16 bg-background">
+        <div className="container px-4 mx-auto">
+          <h2 className="mb-8 text-4xl font-bold text-center">Experiencia</h2>
+          <p className="max-w-3xl mx-auto mb-12 text-center text-muted-foreground">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+          </p>
+
+          <div className="relative">
+            {/* Línea central vertical */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20"></div>
+
+            <div className="grid grid-cols-1 gap-8">
+              {/* Primer item */}
+              <div className="relative flex items-center justify-between">
+                <div className="hidden md:block w-5/12"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:ml-8">
+                  <div className="flex flex-col">
+                    <div className="flex justify-between mb-2">
+                      <h3 className="font-bold">Nexus Technologies</h3>
+                      <span className="text-sm text-muted-foreground">09/11/2022 - 12/12/2023</span>
+                    </div>
+                    <h4 className="mb-2 font-medium">Desarrollador Web</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Segundo item */}
+              <div className="relative flex items-center justify-between">
+                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:mr-8">
+                  <div className="flex flex-col">
+                    <div className="flex justify-between mb-2">
+                      <h3 className="font-bold">Tech Solutions</h3>
+                      <span className="text-sm text-muted-foreground">03/08/2021 - 08/11/2022</span>
+                    </div>
+                    <h4 className="mb-2 font-medium">Frontend Developer</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua.
+                    </p>
+                  </div>
+                </div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div className="hidden md:block w-5/12"></div>
+              </div>
+
+              {/* Tercer item */}
+              <div className="relative flex items-center justify-between">
+                <div className="hidden md:block w-5/12"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:ml-8">
+                  <div className="flex flex-col">
+                    <div className="flex justify-between mb-2">
+                      <h3 className="font-bold">Digital Innovations</h3>
+                      <span className="text-sm text-muted-foreground">01/03/2020 - 02/08/2021</span>
+                    </div>
+                    <h4 className="mb-2 font-medium">Web Developer Jr</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cuarto item */}
+              <div className="relative flex items-center justify-between">
+                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:mr-8">
+                  <div className="flex flex-col">
+                    <div className="flex justify-between mb-2">
+                      <h3 className="font-bold">StartUp Hub</h3>
+                      <span className="text-sm text-muted-foreground">06/01/2019 - 12/02/2020</span>
+                    </div>
+                    <h4 className="mb-2 font-medium">Desarrollador Trainee</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua.
+                    </p>
+                  </div>
+                </div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div className="hidden md:block w-5/12"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="proyectos" className="relative z-10 py-16 bg-background">
+        <div className="container px-4 mx-auto">
+          <h2 className="mb-8 text-4xl font-bold text-center">Ultimos Proyectos</h2>
+
+          {/* First Project */}
+          <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
+            <div className="w-full md:w-1/2">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
+                alt="Landing Page Company Yourle"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="w-full md:w-1/2">
+              <h3 className="text-2xl font-bold mb-4">Landing Page Company Yourle</h3>
+              <p className="text-gray-600 mb-6">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+              </p>
+              <div className="flex gap-4">
+                <a href="#" className="inline-flex items-center px-4 py-2 bg-pink-600 text-white rounded-full">
+                  <span className="mr-2">Visitar</span>
+                </a>
+                <a
+                  href="#"
+                  className="inline-flex items-center px-4 py-2 border border-pink-600 text-pink-600 rounded-full"
+                >
+                  <span className="mr-2">Ver Código</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Second Project */}
+          <div className="flex flex-col md:flex-row-reverse items-center gap-8">
+            <div className="w-full md:w-1/2">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
+                alt="Landing Page Company Yourle"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="w-full md:w-1/2">
+              <h3 className="text-2xl font-bold mb-4">Landing Page Company Yourle</h3>
+              <p className="text-gray-600 mb-6">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+              </p>
+              <div className="flex gap-4">
+                <a href="#" className="inline-flex items-center px-4 py-2 bg-pink-600 text-white rounded-full">
+                  <span className="mr-2">Visitar</span>
+                </a>
+                <a
+                  href="#"
+                  className="inline-flex items-center px-4 py-2 border border-pink-600 text-pink-600 rounded-full"
+                >
+                  <span className="mr-2">Ver Código</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="relative z-10 py-16 bg-background">
+        <div className="container px-4 mx-auto">
+          <h2 className="mb-8 text-4xl font-bold text-center">Skills</h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* Frontend Skills */}
+            <div className="p-6 border border-pink-100 rounded-lg">
+              <h3 className="text-xl font-bold mb-4 text-pink-600">Frontend</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  HTML5
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  CSS3
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  JavaScript
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  React.js
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Next.js
+                </li>
+              </ul>
+            </div>
+
+            {/* Backend Skills */}
+            <div className="p-6 border border-pink-100 rounded-lg">
+              <h3 className="text-xl font-bold mb-4 text-pink-600">Backend</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Node.js
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Express
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  MongoDB
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  PostgreSQL
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  REST APIs
+                </li>
+              </ul>
+            </div>
+
+            {/* Tools & Others */}
+            <div className="p-6 border border-pink-100 rounded-lg">
+              <h3 className="text-xl font-bold mb-4 text-pink-600">Herramientas</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Git
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  GitHub
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  VS Code
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Figma
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Postman
+                </li>
+              </ul>
+            </div>
+
+            {/* Soft Skills */}
+            <div className="p-6 border border-pink-100 rounded-lg">
+              <h3 className="text-xl font-bold mb-4 text-pink-600">Soft Skills</h3>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Trabajo en equipo
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Comunicación
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Resolución de problemas
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Adaptabilidad
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
+                  Proactividad
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Me Section */}
       <section id="sobre-mi" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
