@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Github, Linkedin, FileText, Sun, Moon } from "lucide-react"
+import { Github, Linkedin, FileText, Sun, Moon, ArrowRight } from "lucide-react"
 
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false)
@@ -58,19 +58,19 @@ export default function Portfolio() {
         <div className="container flex items-center justify-between h-16 px-4 mx-auto">
           <div className="text-xl font-bold text-primary">JoseT</div>
           <nav className="hidden md:flex space-x-8">
-            <a href="#inicio" className="text-muted-foreground hover:text-primary">
-              Inicio              
+            <a href="#inicio" className="text-muted-foreground hover:text-primary font-bold">
+              Inicio
             </a>
-            <a href="#experiencia" className="text-muted-foreground hover:text-primary">
+            <a href="#experiencia" className="text-muted-foreground hover:text-primary font-bold">
               Experiencia
             </a>
-            <a href="#proyectos" className="text-muted-foreground hover:text-primary">
+            <a href="#proyectos" className="text-muted-foreground hover:text-primary font-bold">
               Proyectos
             </a>
-            <a href="#skills" className="text-muted-foreground hover:text-primary">
+            <a href="#skills" className="text-muted-foreground hover:text-primary font-bold">
               Skills
             </a>
-            <a href="#sobre-mi" className="text-muted-foreground hover:text-primary">
+            <a href="#sobre-mi" className="text-muted-foreground hover:text-primary font-bold">
               Sobre mí
             </a>
           </nav>
@@ -82,7 +82,12 @@ export default function Portfolio() {
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            <button className="px-4 py-2 text-primary-foreground bg-primary rounded-full">Contáctame</button>
+            <button className="flex justify-between px-6 py-2 text-primary-foreground rounded-full bg-primary bg-pink-600">
+              <div className="pr-2">
+                <ArrowRight />
+              </div>
+              Contáctame
+            </button>
           </div>
         </div>
       </header>
@@ -104,17 +109,22 @@ export default function Portfolio() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua.
         </p>
-        <button className="px-6 py-3 mb-12 text-white bg-pink-600 rounded-full">Contáctame</button>
+        <button className="flex justify-between px-6 py-3 mb-12 text-white rounded-full bg-primary bg-pink-600">
+          <div className="pr-2">
+            <ArrowRight />
+          </div>
+          Contáctame
+        </button>
         <div className="flex space-x-6">
-          <a href="#" className="text-pink-600 hover:text-pink-700">
+          <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700">
             <Github size={24} />
             <span className="sr-only">GitHub</span>
           </a>
-          <a href="#" className="text-pink-600 hover:text-pink-700">
+          <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700">
             <Linkedin size={24} />
             <span className="sr-only">LinkedIn</span>
           </a>
-          <a href="#" className="text-pink-600 hover:text-pink-700">
+          <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700">
             <FileText size={24} />
             <span className="sr-only">Resume</span>
           </a>
@@ -132,13 +142,14 @@ export default function Portfolio() {
 
           <div className="relative">
             {/* Línea central vertical */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary/20"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary"></div>
 
             <div className="grid grid-cols-1 gap-8">
               {/* Primer item */}
               <div className="relative flex items-center justify-between">
                 <div className="hidden md:block w-5/12"></div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                {/* circle */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
                 <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:ml-8">
                   <div className="flex flex-col">
                     <div className="flex justify-between mb-2">
@@ -169,14 +180,14 @@ export default function Portfolio() {
                     </p>
                   </div>
                 </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
                 <div className="hidden md:block w-5/12"></div>
               </div>
 
               {/* Tercer item */}
               <div className="relative flex items-center justify-between">
                 <div className="hidden md:block w-5/12"></div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
                 <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:ml-8">
                   <div className="flex flex-col">
                     <div className="flex justify-between mb-2">
@@ -207,7 +218,7 @@ export default function Portfolio() {
                     </p>
                   </div>
                 </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
                 <div className="hidden md:block w-5/12"></div>
               </div>
             </div>
