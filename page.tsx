@@ -82,11 +82,13 @@ export default function Portfolio() {
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            <button className="flex justify-between px-6 py-2 text-primary-foreground rounded-full bg-primary bg-pink-600">
-              <div className="pr-2">
-                <ArrowRight />
-              </div>
-              Contáctame
+            <button className="px-6 py-2 text-primary-foreground rounded-full bg-primary bg-pink-600">
+              <a className="flex justify-between gap-2" href="#contact">
+                <div>
+                  <ArrowRight />
+                </div>
+                Contáctame
+              </a>
             </button>
           </div>
         </div>
@@ -109,11 +111,13 @@ export default function Portfolio() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua.
         </p>
-        <button className="flex justify-between px-6 py-3 mb-12 text-white rounded-full bg-primary bg-pink-600">
-          <div className="pr-2">
-            <ArrowRight />
-          </div>
-          Contáctame
+        <button className="px-6 py-3 mb-12 text-white rounded-full bg-primary bg-pink-600">
+          <a className="flex justify-between gap-2" href="#contact">
+            <div>
+              <ArrowRight />
+            </div>
+            Contáctame
+          </a>
         </button>
         <div className="flex space-x-6">
           <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700">
@@ -478,7 +482,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="relative z-10 py-16 bg-background">
+      <section id="contact" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
           <h2 className="mb-8 text-5xl font-bold text-center">Contacto</h2>
           <p className="max-w-xl mx-auto text-center text-gray-600 mb-12">
