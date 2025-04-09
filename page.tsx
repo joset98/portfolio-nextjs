@@ -503,14 +503,14 @@ export default function Portfolio() {
                   <input
                     type="text"
                     placeholder="Nombre"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:border-primary outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-inputBackground border border-inputBorder focus:border-primary outline-none transition-colors"
                   />
                 </div>
                 <div>
                   <input
                     type="email"
                     placeholder="Email"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:border-primary outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-inputBackground border border-inputBorder focus:border-primary outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -518,7 +518,7 @@ export default function Portfolio() {
                 <textarea
                   placeholder="Mensaje"
                   rows={6}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:border-primary outline-none transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-inputBorder focus:border-primary outline-none transition-colors resize-none bg-inputBackground"
                 ></textarea>
               </div>
               <div className="flex justify-center">

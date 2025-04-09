@@ -47,6 +47,14 @@ module.exports = {
           DEFAULT: "hsl(var(--vibrant-pink))",
           foreground: "hsl(var(--vibrant-pink-foreground))",
         },
+        inputBackground: {
+          DEFAULT: "hsl(var(--input-background))",
+          foreground: "hsl(var(--sidebar-border))",
+        },
+        inputBorder: {
+          DEFAULT: "hsl(var(--input-border))",
+          foreground: "hsl(var(--input-border))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
