@@ -82,7 +82,7 @@ export default function Portfolio() {
             >
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
-            <button className="px-6 py-2 text-primary-foreground rounded-full bg-primary bg-pink-600">
+            <button className="px-6 py-2 text-white rounded-full bg-primary bg-pink-600 hover:bg-pink-700 transition-colors">
               <a className="flex justify-between gap-2" href="#contact">
                 <div>
                   <ArrowRight />
@@ -105,13 +105,13 @@ export default function Portfolio() {
             className="object-cover w-full h-full"
           />
         </div>
-        <h2 className="mb-2 text-2xl font-medium">Hey, Soy Jose</h2>
-        <h1 className="mb-6 text-6xl font-bold tracking-tight">DESARROLLADOR WEB</h1>
+        <h2 className="mb-2 text-2xl font-bold">Hey, Soy Jose</h2>
+        <h1 className="mb-6 text-5xl font-black tracking-tight uppercase">Desarrollador web</h1>
         <p className="max-w-lg mb-8 text-gray-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua.
         </p>
-        <button className="px-6 py-3 mb-12 text-white rounded-full bg-primary bg-pink-600">
+        <button className="px-6 py-3 mb-12 text-white rounded-full bg-primary bg-pink-600 hover:bg-pink-700 transition-colors">
           <a className="flex justify-between gap-2" href="#contact">
             <div>
               <ArrowRight />
@@ -254,13 +254,13 @@ export default function Portfolio() {
                 ex ea commodo consequat.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full">
+                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full">
                   <ArrowUpRight size={25} />
                   <span className="mr-2">Visitar</span>
                 </a>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full"
                 >
                   <Github size={25} />
                   <span className="mr-2">
@@ -290,13 +290,13 @@ export default function Portfolio() {
                 ex ea commodo consequat.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full">
+                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full">
                   <ArrowUpRight size={25} />
                   <span className="mr-2">Visitar</span>
                 </a>
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white rounded-full"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full"
                 >
                   <Github size={25} />
                   <span className="mr-2">
@@ -444,13 +444,13 @@ export default function Portfolio() {
                 dolor sit amet.
               </p>
               <div className="flex gap-4">
-                <button className="flex justify-between items-center gap-2 px-6 py-3 text-white bg-primary bg-pink-600 rounded-full">
+                <button className="flex justify-between items-center gap-2 px-6 py-3 text-white bg-primary bg-pink-600 hover:bg-pink-700 transition-colors rounded-full">
                   <div>
                     <Download size={25} />
                   </div>
                   Descargar CV
                 </button>
-                <button className="flex justify-between gap-2 px-8 py-3 text-primary text-pink-600 border border-primary border-pink-600 rounded-full">
+                <button className="flex justify-between gap-2 px-8 py-3 text-primary text-pink-600 border border-primary border-pink-600 rounded-full hover:bg-primary hover:text-white transition-colors">
                   <div>
                     <ArrowRight />
                   </div>
@@ -537,18 +537,24 @@ export default function Portfolio() {
           <div className="flex flex-col items-center gap-6">
             <h2 className="text-2xl font-bold">JoseT</h2>
             <div className="flex space-x-6">
-              <a href="#" className="hover:opacity-75 transition-opacity">
-                <Github size={24} />
-                <span className="sr-only">GitHub</span>
-              </a>
-              <a href="#" className="hover:opacity-75 transition-opacity">
-                <Linkedin size={24} />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a href="#" className="hover:opacity-75 transition-opacity">
-                <FileText size={24} />
-                <span className="sr-only">Resume</span>
-              </a>
+              <div className="bg-white rounded p-1">
+                <a href="#" className="hover:opacity-75 transition-opacity">
+                  <Github size={24} className="text-primary" />
+                  <span className="sr-only">GitHub</span>
+                </a>
+              </div>
+              <div className="bg-white rounded p-1">
+                <a href="#" className="hover:opacity-75 transition-opacity">
+                  <Linkedin size={24} className="text-primary" />
+                  <span className="sr-only">LinkedIn</span>
+                </a>
+              </div>
+              <div className="bg-white rounded p-1">
+                <a href="#" className="hover:opacity-75 transition-opacity">
+                  <FileText size={24} className="text-primary" />
+                  <span className="sr-only">Resume</span>
+                </a>
+              </div>
             </div>
             <p className="text-sm opacity-90">
               Copyright © {new Date().getFullYear()} JoseT. Todos los derechos reservados.
