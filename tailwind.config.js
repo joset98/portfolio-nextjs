@@ -55,6 +55,10 @@ module.exports = {
           DEFAULT: "hsl(var(--input-border))",
           foreground: "hsl(var(--input-border))",
         },
+        socialBtnBg: {
+          DEFAULT: "hsl(var(--social-button-background))",
+          foreground: "hsl(var(--background))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",

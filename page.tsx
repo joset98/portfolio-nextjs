@@ -120,19 +120,19 @@ export default function Portfolio() {
           </a>
         </button>
         <div className="flex space-x-6">
-          <div className="shadow-md bg-white rounded p-1">
+          <div className="shadow-md bg-socialBtnBg rounded p-1">
             <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700 hover:opacity-75 transition-opacity shadow-primary-500">
               <Github size={24} />
               <span className="sr-only">GitHub</span>
             </a>
           </div>
-          <div className="shadow-md bg-white rounded p-1">
+          <div className="shadow-md bg-socialBtnBg rounded p-1">
             <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700 hover:opacity-75 transition-opacity">
               <Linkedin size={24} />
               <span className="sr-only">LinkedIn</span>
             </a>
           </div>
-          <div className="shadow-md bg-white rounded p-1">
+          <div className="shadow-md bg-socialBtnBg rounded p-1">
             <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700 hover:opacity-75 transition-opacity">
               <FileText size={24} />
               <span className="sr-only">Resume</span>

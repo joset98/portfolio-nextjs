@@ -48,6 +48,7 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
     --input-background: 0 0% 100%;
     --input-border: 0, 0%, 66%;
+    --social-button-background: 0 0% 100%;
   }
   .dark {
     /* 212122 */
@@ -79,6 +80,8 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
     --input-background: 240, 1%, 13%;
     --input-border: 0, 0%, 20%;
+    /* 3C1622 */
+    --social-button-background: 341, 46%, 16%;
   }
 }
 
