@@ -1,10 +1,12 @@
 import { Skills as SkillsType } from "@/app/types"
+import { skillIcons } from "@/components/ui/iconsMap";
+import { Code } from "lucide-react";
 
 interface SkillsProps {
   skills: SkillsType | null;
 }
 
-export function Skills({ skills }: SkillsProps) {
+export function SkillsSection({ skills }: SkillsProps) {
   return (
     <section id="skills" className="relative z-10 py-16 bg-background">
       <div className="container px-4 mx-auto">
@@ -18,6 +20,9 @@ export function Skills({ skills }: SkillsProps) {
                   <li key={i} className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
                     <span className="text-muted-foreground">{skill}</span>
+                    <span className="text-lg">
+                      {skillIcons[skill as keyof typeof skillIcons] || <Code size={18} />}
+                    </span>
                   </li>
                 ))}
               </ul>

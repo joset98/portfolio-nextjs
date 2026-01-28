@@ -10,6 +10,8 @@ import experienceData from "./app/data/experience.json"
 import skillsData from "./app/data/skills.json";
 import { Experience, Project, Skills } from "./app/types"
 import { Footer } from "./app/components/Footer"
+import { Header } from "./app/components/Header"
+import { SkillsSection } from "./app/components/Skills"
 
 export default function Portfolio() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -64,45 +66,7 @@ export default function Portfolio() {
       <div className="absolute right-1/3 bottom-1/4 text-pink-100/10 text-6xl">{"}"}</div>
 
       {/* Header */}
-      <header className="relative z-10 w-full bg-background border-b border-border">
-        <div className="container flex items-center justify-between h-16 px-4 mx-auto">
-          <div className="text-xl font-bold text-primary">JoseT</div>
-          <nav className="hidden md:flex space-x-8">
-            <a href="#inicio" className="text-muted-foreground hover:text-primary font-bold">
-              Inicio
-            </a>
-            <a href="#experiencia" className="text-muted-foreground hover:text-primary font-bold">
-              Experiencia
-            </a>
-            <a href="#proyectos" className="text-muted-foreground hover:text-primary font-bold">
-              Proyectos
-            </a>
-            <a href="#skills" className="text-muted-foreground hover:text-primary font-bold">
-              Skills
-            </a>
-            <a href="#sobre-mi" className="text-muted-foreground hover:text-primary font-bold">
-              Sobre mí
-            </a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full hover:bg-accent transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {resolvedTheme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-            <button className="px-6 py-2 text-white rounded-full bg-primary bg-pink-600 hover:bg-pink-700 transition-colors">
-              <a className="flex justify-between gap-2" href="#contact">
-                <div>
-                  <ArrowRight />
-                </div>
-                Contáctame
-              </a>
-            </button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="relative z-10 flex flex-col items-center justify-center min-h-screen py-16 text-center bg-background">
@@ -151,7 +115,7 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experiencia" className="relative z-10 py-16 bg-background">
+      <section id="experience" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
           <h2 className="mb-8 text-5xl font-bold text-center">Experiencia</h2>
           <p className="max-w-3xl mx-auto mb-12 text-center text-muted-foreground">
@@ -326,26 +290,7 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="relative z-10 py-16 bg-background">
-        <div className="container px-4 mx-auto">
-          <h2 className="mb-8 text-5xl font-bold text-center">Skills</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skills && Object.entries(skills).map(([category, skillList]) => (
-              <div key={category} className="p-6 bg-card border border-pink-100 rounded-lg transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
-                <h3 className="text-xl font-bold mb-4 text-primary">{category}</h3>
-                <ul className="space-y-2">
-                  {skillList.map((skill, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-muted-foreground">{skill}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SkillsSection skills={skills}/>
 
       {/* About Me Section */}
       <section id="sobre-mi" className="relative z-10 py-16 bg-background">
