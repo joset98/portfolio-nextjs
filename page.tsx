@@ -8,27 +8,7 @@ import { Github, Linkedin, FileText, Sun, Moon, ArrowRight, ArrowUpRight, Downlo
 import projectData from "./app/data/projects.json"
 import experienceData from "./app/data/experience.json"
 import skillsData from "./app/data/skills.json";
-
-
-type Project = {
-  title: string;
-  description: string;
-  technologies: string[];
-  link: string;
-  image: string;
-};
-
-type Experience = {
-  role: string;
-  company: string;
-  duration: string;
-  description: string[];
-  technologies: string[];
-};
-
-type Skills = {
-  [category: string]: string[];
-};
+import { Experience, Project, Skills } from "./app/types"
 
 export default function Portfolio() {
   const { setTheme, resolvedTheme } = useTheme();
