@@ -35,6 +35,26 @@ export default function Portfolio() {
   const [experience, setExperience] = useState<Experience[]>(experienceData || [])
   const [projects, setProjects] = useState<Project[]>(projectData || [])
   const [skills, setSkills] = useState<Skills | null>(skillsData || null)
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (formStatus === 'loading') return;
+
+    setFormStatus("loading");
+    // Simulate API call
+    setTimeout(() => {
+      setFormStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setFormStatus("idle"), 5000); // Reset after 5 seconds
+    }, 2000);
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden transition-colors duration-300">
@@ -398,45 +418,65 @@ export default function Portfolio() {
         <div className="container px-4 mx-auto">
           <h2 className="mb-8 text-5xl font-bold text-center">Contacto</h2>
           <p className="max-w-xl mx-auto text-center text-gray-600 mb-12">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
+            ¿Tienes alguna pregunta o quieres trabajar juntos? No dudes en contactarme.
           </p>
 
-          <form className="max-w-xl mx-auto">
+          <form className="max-w-xl mx-auto" onSubmit={handleSubmit}>
             <div className="grid gap-6">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
                   <input
                     type="text"
+                    name="name"
                     placeholder="Nombre"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-inputBackground border border-inputBorder focus:border-primary outline-none transition-colors"
                   />
                 </div>
                 <div>
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
                     className="w-full px-4 py-3 rounded-xl bg-inputBackground border border-inputBorder focus:border-primary outline-none transition-colors"
                   />
                 </div>
               </div>
               <div>
                 <textarea
+                  name="message"
                   placeholder="Mensaje"
                   rows={6}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
                   className="w-full px-4 py-3 rounded-xl border border-inputBorder focus:border-primary outline-none transition-colors resize-none bg-inputBackground"
                 ></textarea>
               </div>
-              <div className="flex justify-center">
+              <div className="flex flex-col items-center">
                 <button
                   type="submit"
-                  className="flex justify-between gap-2 px-8 py-3 text-white bg-primary bg-pink-600 rounded-full hover:bg-pink-700 transition-colors"
+                  disabled={formStatus === 'loading'}
+                  className="flex justify-center items-center gap-2 px-8 py-3 text-white bg-primary bg-pink-600 rounded-full hover:bg-pink-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                  <div>
-                    <ArrowRight />
-                  </div>
-                  Contáctame
+                  {formStatus === 'loading' ? 'Enviando...' : (
+                    <>
+                      <ArrowRight />
+                      <span>Enviar Mensaje</span>
+                    </>
+                  )}
                 </button>
+                {formStatus === 'success' && (
+                  <p className="mt-4 text-green-500">¡Mensaje enviado con éxito! Gracias por contactarme.</p>
+                )}
+                {formStatus === 'error' && (
+                  <p className="mt-4 text-red-500">Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.</p>
+                )}
               </div>
             </div>
           </form>
