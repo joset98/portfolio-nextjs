@@ -1,31 +1,39 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { Github, Linkedin, FileText, Sun, Moon, ArrowRight, ArrowUpRight, Download } from "lucide-react"
+import projectData from "./app/data/projects.json"
+import experienceData from "./app/data/experience.json"
+import skillsData from "./app/data/skills.json";
+
+
+type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  link: string;
+  image: string;
+};
+
+type Experience = {
+  role: string;
+  company: string;
+  duration: string;
+  description: string;
+};
+
+type Skills = {
+  [category: string]: string[];
+};
 
 export default function Portfolio() {
-  const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    // Check system preference on mount
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setDarkMode(true)
-    }
-  }, [])
-
-  useEffect(() => {
-    // Update class when darkMode changes
-    if (darkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }, [darkMode])
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
+  const { setTheme, resolvedTheme } = useTheme();
+  const [experience, setExperience] = useState<Experience[]>(experienceData || [])
+  const [projects, setProjects] = useState<Project[]>(projectData || [])
+  const [skills, setSkills] = useState<Skills | null>(skillsData || null)
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden transition-colors duration-300">
@@ -76,11 +84,11 @@ export default function Portfolio() {
           </nav>
           <div className="flex items-center gap-4">
             <button
-              onClick={toggleDarkMode}
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
               className="p-2 rounded-full hover:bg-accent transition-colors"
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {resolvedTheme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             <button className="px-6 py-2 text-white rounded-full bg-primary bg-pink-600 hover:bg-pink-700 transition-colors">
               <a className="flex justify-between gap-2" href="#contact">
@@ -146,91 +154,70 @@ export default function Portfolio() {
         <div className="container px-4 mx-auto">
           <h2 className="mb-8 text-5xl font-bold text-center">Experiencia</h2>
           <p className="max-w-3xl mx-auto mb-12 text-center text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+            A lo largo de mi carrera, he tenido el privilegio de trabajar en diversos proyectos que me han permitido crecer como desarrollador.
           </p>
 
           <div className="relative">
             {/* Línea central vertical */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-primary"></div>
+            <motion.div
+              className="absolute left-1/2 transform -translate-x-3/4 h-full w-px bg-primary origin-top"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            />
 
             <div className="grid grid-cols-1 gap-8">
-              {/* Primer item */}
-              <div className="relative flex items-center justify-between">
-                <div className="hidden md:block w-5/12"></div>
-                {/* circle */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
-                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:ml-8">
-                  <div className="flex flex-col">
-                    <div className="flex justify-between mb-2">
-                      <h3 className="font-bold">Nexus Technologies</h3>
-                      <span className="text-sm text-muted-foreground">09/11/2022 - 12/12/2023</span>
-                    </div>
-                    <h4 className="mb-2 font-medium">Desarrollador Web</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              {experience.map((exp, index) => (
+                <div key={index} className="relative flex items-center justify-between">
+                  {index % 2 !== 0 ? (
+                    <motion.div
+                      initial={{ opacity: 0, x: -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:mr-8 w-full"
+                    >
+                      <div className="flex flex-col">
+                        <div className="flex justify-between mb-2">
+                          <h3 className="font-bold">{exp.company}</h3>
+                          <span className="text-sm text-muted-foreground">{exp.duration}</span>
+                        </div>
+                        <h4 className="mb-2 font-medium">{exp.role}</h4>
+                        <p className="text-sm text-muted-foreground">{exp.description}</p>
+                      </div>
+                    </motion.div>
+                  ) : <div className="hidden md:block w-5/12"></div>}
 
-              {/* Segundo item */}
-              <div className="relative flex items-center justify-between">
-                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:mr-8">
-                  <div className="flex flex-col">
-                    <div className="flex justify-between mb-2">
-                      <h3 className="font-bold">Tech Solutions</h3>
-                      <span className="text-sm text-muted-foreground">03/08/2021 - 08/11/2022</span>
-                    </div>
-                    <h4 className="mb-2 font-medium">Frontend Developer</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
-                <div className="hidden md:block w-5/12"></div>
-              </div>
+                  {/* circle */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"
+                  ></motion.div>
 
-              {/* Tercer item */}
-              <div className="relative flex items-center justify-between">
-                <div className="hidden md:block w-5/12"></div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
-                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:ml-8">
-                  <div className="flex flex-col">
-                    <div className="flex justify-between mb-2">
-                      <h3 className="font-bold">Digital Innovations</h3>
-                      <span className="text-sm text-muted-foreground">01/03/2020 - 02/08/2021</span>
-                    </div>
-                    <h4 className="mb-2 font-medium">Web Developer Jr</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
-                    </p>
-                  </div>
+                  {index % 2 === 0 ? (
+                    <motion.div
+                      initial={{ opacity: 0, x: 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:ml-8 w-full"
+                    >
+                      <div className="flex flex-col">
+                        <div className="flex justify-between mb-2">
+                          <h3 className="font-bold">{exp.company}</h3>
+                          <span className="text-sm text-muted-foreground">{exp.duration}</span>
+                        </div>
+                        <h4 className="mb-2 font-medium">{exp.role}</h4>
+                        <p className="text-sm text-muted-foreground">{exp.description}</p>
+                      </div>
+                    </motion.div>
+                  ) : <div className="hidden md:block w-5/12"></div>}
                 </div>
-              </div>
-
-              {/* Cuarto item */}
-              <div className="relative flex items-center justify-between">
-                <div className="relative md:w-5/12 p-6 bg-card border border-border rounded-lg md:mr-8">
-                  <div className="flex flex-col">
-                    <div className="flex justify-between mb-2">
-                      <h3 className="font-bold">StartUp Hub</h3>
-                      <span className="text-sm text-muted-foreground">06/01/2019 - 12/02/2020</span>
-                    </div>
-                    <h4 className="mb-2 font-medium">Desarrollador Trainee</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"></div>
-                <div className="hidden md:block w-5/12"></div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -571,4 +558,3 @@ export default function Portfolio() {
     </div>
   )
 }
-
