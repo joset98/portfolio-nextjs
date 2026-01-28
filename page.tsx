@@ -22,7 +22,8 @@ type Experience = {
   role: string;
   company: string;
   duration: string;
-  description: string;
+  description: string[];
+  technologies: string[];
 };
 
 type Skills = {
@@ -114,10 +115,9 @@ export default function Portfolio() {
           />
         </div>
         <h2 className="mb-2 text-2xl font-bold">Hey, Soy Jose</h2>
-        <h1 className="mb-6 text-5xl font-black tracking-tight uppercase">Desarrollador web</h1>
+        <h1 className="mb-6 text-5xl font-black tracking-tight uppercase">Fullstack Engineer</h1>
         <p className="max-w-lg mb-8 text-gray-600">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
+          Ingeniero de Software Fullstack con +4 años de experiencia optimizando soluciones web. Experto en el stack Node.js/React/PHP, he logrado reducir tiempos de carga en un 30% y elevar la fiabilidad del sistema en un 15% mediante ingeniería de calidad.
         </p>
         <button className="px-6 py-3 mb-12 text-white rounded-full bg-primary bg-pink-600 hover:bg-pink-700 transition-colors">
           <a className="flex justify-between gap-2" href="#contact">
@@ -184,7 +184,18 @@ export default function Portfolio() {
                           <span className="text-sm text-muted-foreground">{exp.duration}</span>
                         </div>
                         <h4 className="mb-2 font-medium">{exp.role}</h4>
-                        <p className="text-sm text-muted-foreground">{exp.description}</p>
+                        <ul className="pl-5 mt-2 space-y-2 text-sm list-disc text-muted-foreground">
+                          {exp.description.map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                        </ul>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {exp.technologies.map((tech, i) => (
+                            <span key={i} className="px-3 py-1 text-xs font-semibold rounded-full bg-pink-600/10 text-pink-600 border border-pink-600/20">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </motion.div>
                   ) : <div className="hidden md:block w-5/12"></div>}
@@ -212,7 +223,18 @@ export default function Portfolio() {
                           <span className="text-sm text-muted-foreground">{exp.duration}</span>
                         </div>
                         <h4 className="mb-2 font-medium">{exp.role}</h4>
-                        <p className="text-sm text-muted-foreground">{exp.description}</p>
+                        <ul className="pl-5 mt-2 space-y-2 text-sm list-disc text-muted-foreground">
+                          {exp.description.map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                        </ul>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {exp.technologies.map((tech, i) => (
+                            <span key={i} className="px-3 py-1 text-xs font-semibold rounded-full bg-pink-600/10 text-pink-600 border border-pink-600/20">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </motion.div>
                   ) : <div className="hidden md:block w-5/12"></div>}
