@@ -1,0 +1,47 @@
+{
+  "Frontend": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript (ES6+)",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Diseño Responsive"
+  ],
+  "Backend": [
+    "Node.js (NestJS)",
+    "Express",
+    "Prisma",
+    "PHP (Laravel, Zend)",
+    "Python (Django)",
+    "MySQL",
+    "PostgreSQL"
+  ],
+  "Testing": [
+    "Cypress",
+    "Jest",
+    "Unit Testing",
+    "Integration Testing"
+  ],
+  "Herramientas y Plataformas": [
+    "Git",
+    "Github",
+    "Gitlab",
+    "NPM",
+    "Webpack",
+    "AWS (S3)",
+    "Azure",
+    "CI/CD pipelines",
+    "Postman"
+  ],
+  "Metodologías y Soft Skills": [
+    "Jira",
+    "Scrum",
+    "Nexus Scrum",
+    "Trabajo en equipo",
+    "Pensamiento Crítico",
+    "Capacidad de análisis",
+    "Resolución de problemas"
+  ]
+}

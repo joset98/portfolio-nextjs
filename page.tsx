@@ -328,115 +328,20 @@ export default function Portfolio() {
       <section id="skills" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
           <h2 className="mb-8 text-5xl font-bold text-center">Skills</h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {/* Frontend Skills */}
-            <div className="p-6 border border-pink-100 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-pink-600">Frontend</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  HTML5
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  CSS3
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  JavaScript
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  React.js
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Next.js
-                </li>
-              </ul>
-            </div>
-
-            {/* Backend Skills */}
-            <div className="p-6 border border-pink-100 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-pink-600">Backend</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Node.js
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Express
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  MongoDB
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  PostgreSQL
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  REST APIs
-                </li>
-              </ul>
-            </div>
-
-            {/* Tools & Others */}
-            <div className="p-6 border border-pink-100 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-pink-600">Herramientas</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Git
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  GitHub
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  VS Code
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Figma
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Postman
-                </li>
-              </ul>
-            </div>
-
-            {/* Soft Skills */}
-            <div className="p-6 border border-pink-100 rounded-lg">
-              <h3 className="text-xl font-bold mb-4 text-pink-600">Soft Skills</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Trabajo en equipo
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Comunicación
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Resolución de problemas
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Adaptabilidad
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-pink-600 rounded-full"></div>
-                  Proactividad
-                </li>
-              </ul>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {skills && Object.entries(skills).map(([category, skillList]) => (
+              <div key={category} className="p-6 bg-card border border-pink-100 rounded-lg transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
+                <h3 className="text-xl font-bold mb-4 text-primary">{category}</h3>
+                <ul className="space-y-2">
+                  {skillList.map((skill, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span className="text-muted-foreground">{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -476,20 +381,12 @@ export default function Portfolio() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 border border-pink-100 rounded-lg">
-                <h3 className="text-3xl font-bold text-pink-600 mb-2">2+</h3>
+                <h3 className="text-3xl font-bold text-pink-600 mb-2">4+</h3>
                 <p className="text-gray-600">Años de experiencia</p>
               </div>
               <div className="p-6 border border-pink-100 rounded-lg">
-                <h3 className="text-3xl font-bold text-pink-600 mb-2">10+</h3>
+                <h3 className="text-3xl font-bold text-pink-600 mb-2">4+</h3>
                 <p className="text-gray-600">Proyectos completados</p>
-              </div>
-              <div className="p-6 border border-pink-100 rounded-lg">
-                <h3 className="text-3xl font-bold text-pink-600 mb-2">15+</h3>
-                <p className="text-gray-600">Clientes satisfechos</p>
-              </div>
-              <div className="p-6 border border-pink-100 rounded-lg">
-                <h3 className="text-3xl font-bold text-pink-600 mb-2">5+</h3>
-                <p className="text-gray-600">Certificaciones</p>
               </div>
             </div>
           </div>

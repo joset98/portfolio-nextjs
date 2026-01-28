@@ -1,0 +1,66 @@
+[
+  {
+    "role": "Software Engineer",
+    "company": "Azordev",
+    "duration": "Agosto, 2022 - presente (3 años)",
+    "description": [
+      "Arquitectura de estado global eficiente utilizando Context API y Hooks personalizados, reduciendo renders innecesarios.",
+      "Implementación de suites de pruebas unitarias e integración con Jest, aumentando la fiabilidad del sistema en un 15%",
+      "Optimización del pipeline de CI/CD para garantizar despliegues más seguros y consistentes.",
+      "Reducción del 20% en la aparición de bugs mediante la creación de guías de estilo y la institucionalización de revisiones de código (Code Reviews).",
+      "Mejora de la experiencia de usuario final reduciendo el tamaño del bundle de la aplicación en un 25%."
+    ],
+    "technologies": [
+      "Next.js",
+      "React",
+      "NodeJS",
+      "NestJS",
+      "JavaScript",
+      "TypeScript",
+      "Mysql",
+      "PosgreSQL",
+      "Jest",
+      "Cypress",
+      "Unit Test",
+      "CSS"
+    ]
+  },
+  {
+    "role": "Fullstack Developer",
+    "company": "Gamifica",
+    "duration": "Agosto, 2021 - Mayo, 2022 (10 meses)",
+    "description": [
+      "Lideré la creación de un módulo social dinámico con React.js que permitió a más de 2,000 usuarios interactuar mediante logros, comentarios y reacciones, fomentando el compromiso dentro de la plataforma.",
+      "Reducción del 30% en tiempos de carga mediante la optimización del renderizado en cliente y refactorización de lógica en el backend (Spring Java).",
+      "Optimización de sistemas de intercambio de insignias digitales, logrando una mejora del 25% en la velocidad de respuesta para asegurar una experiencia de usuario fluida y sin interrupciones."
+    ],
+    "technologies": [
+      "React.js",
+      "JavaScript",
+      "Spring",
+      "Java",
+      "Mysql",
+      "Jira"
+    ]
+  },
+  {
+    "role": "Fullstack Developer",
+    "company": "Publipagos.net",
+    "duration": "Julio, 2020 - Junio, 2021 (1 año)",
+    "description": [
+      "Modernización de la plataforma legacy hacia Next.js, implementando estrategias de SSR y SSG para optimizar la carga y el SEO.",
+      "Diseño de una biblioteca de componentes reactivos para mejorar la mantenibilidad y fluidez de la interfaz.",
+      "Colaboración en la reingeniería de flujos de trabajo, logrando un ahorro del 20% en tiempos de revisión operativa."
+    ],
+    "technologies": [
+      "Next.js",
+      "React.js",
+      "JavaScript (ES6+)",
+      "Html5",
+      "CSS3",
+      "Mysql",
+      "Laravel",
+      "Php"
+    ]
+  }
+]
