@@ -1,57 +1,5 @@
 [
   {
-    "id": "workspot",
-    "title": "WORKSPOT | Plataforma Ecosistema para Freelancers",
-    "description": "Workspot es una SPA de alto rendimiento diseñada para centralizar el flujo de trabajo entre empleadores y talentos. El proyecto destaca por replicar una arquitectura de software empresarial, priorizando la modularidad y la lógica de negocio compleja.",
-    "fullDescription": "Arquitectura Multi-rol: Sistema de permisos granulares para Administradores, Empleadores y Freelancers con dashboards dinámicos.\n\nFlujos de Usuario Complejos: Implementación de un Wizard de 10 pasos con manejo de estado avanzado para la publicación de proyectos.\n\nInteractividad Avanzada: Sistema de chat directo, gestión de propuestas en tiempo real y centro de notificaciones.\n\nStack Técnico: Next.js, TypeScript, Tailwind CSS y shadcn/ui. Gestión de estado global mediante React Context API y persistencia de datos en LocalStorage, logrando una experiencia \"Full Stack\" desde el frontend.",
-    "technologies": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "React Context API"
-    ],
-    "githubUrl": "https://github.com/joset98/workspot",
-    "liveUrl": "https://github.com/joset98/workspot",
-    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
-  },
-  {
-    "id": "academic-react",
-    "title": "Academic Management App",
-    "description": "Este proyecto es una aplicación web completa para la gestión académica, diseñada para administrar de forma centralizada las operaciones de una institución educativa. La plataforma permite a diferentes tipos de usuarios (administradores, directores, profesores, estudiantes) interactuar con el sistema según sus roles y permisos.",
-    "fullDescription": "Características Principales:\nGestión Integral (CRUD): La aplicación soporta la creación, lectura, actualización y eliminación de entidades clave como:\nEstudiantes y Colaboradores (personal docente y administrativo).\nProgramas académicos y Materias.\nSalones, Cursos y Horarios.\nConceptos de pago, Preinscripciones y registro de Pagos.\nControl de Acceso Basado en Roles (RBAC): El sistema restringe el acceso a ciertas vistas y funcionalidades dependiendo del rol del usuario autenticado, garantizando la seguridad y la integridad de los datos.\nInterfaz de Usuario Moderna y Reutilizable: La interfaz, construida con componentes genéricos como GenericTable y FormModal, ofrece una experiencia de usuario limpia y eficiente. Se utiliza un sistema de notificaciones (toast) personalizado para dar feedback inmediato al usuario.\n\nImplementación Técnica y Arquitectura:\nEl proyecto está construido sobre Next.js y TypeScript, aprovechando el App Router para una estructura de enrutamiento moderna.\n\nUna de las características más destacadas es su arquitectura de datos del lado del cliente. Para simular un backend y gestionar la persistencia de datos sin necesidad de un servidor, se implementó un ingenioso sistema utilizando el localStorage del navegador.\n\nEste sistema se abstrae a través de un conjunto de hooks de React personalizados (useStudents, useCourses, usePrograms, etc.) ubicados en hooks/useDataStorage.ts. Cada hook se encarga de:\n\nCargar los datos desde localStorage al iniciar el componente.\nExponer el estado (ej. la lista de estudiantes) y las funciones para manipularlo (addStudent, updateStudent, deleteStudent).\nSincronizar y persistir automáticamente cualquier cambio en el estado de vuelta a localStorage.\nEste enfoque no solo demuestra un profundo conocimiento de los hooks de React (useState, useEffect, useCallback), sino que también es una solución elegante para crear aplicaciones complejas y con estado para un portafolio, centrando todo el desarrollo en el frontend.",
-    "technologies": [
-      "Next.js",
-      "TypeScript",
-      "React",
-      "Tailwind CSS",
-      "React Context API"
-    ],
-    "githubUrl": "https://github.com/joset98/academic-react",
-    "liveUrl": "https://github.com/joset98/academic-react",
-    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
-  },
-  {
-    "id": "octo-condo",
-    "title": "Octo-Condo: Sistema Full-Stack para la Gestión de Condominios",
-    "description": "Octo-Condo es una solución de software completa, diseñada bajo una arquitectura cliente-servidor, para automatizar y simplificar la administración de condominios. El sistema se compone de dos proyectos principales: un backend robusto (octo-condo-api-engine) y una interfaz de usuario intuitiva (octo-condo-manager).",
-    "fullDescription": "Backend (octo-condo-api-engine):\n\nDesarrollado con NestJS (Node.js/TypeScript), este motor es el cerebro de la aplicación. Sus responsabilidades clave incluyen:\n\nLógica de Negocio Centralizada: Automatiza el cálculo de las cuotas mensuales, prorrateando los gastos comunes entre las unidades según su alícuota y asignando gastos privados.\nAPI REST Segura: Expone endpoints para todas las operaciones, protegidos con autenticación basada en JWT y un sistema de roles (ADMIN, OWNER) que garantiza que los usuarios solo accedan a la información y acciones permitidas.\nGeneración Dinámica de PDF: Una de las características más destacadas es la capacidad de generar recibos de pago y reportes detallados en formato PDF. Utiliza Puppeteer para convertir plantillas HTML dinámicas, asegurando documentos profesionales y precisos.\nIntegración con Servicios Externos: Se conecta a APIs de terceros para obtener la tasa de cambio de moneda en tiempo real (ej. BCV), permitiendo presentar los montos en múltiples divisas (USD y Bs.) en los recibos, una funcionalidad crucial para el contexto venezolano.\n\nFrontend (octo-condo-manager):\n\nEs la aplicación web con la que interactúan los usuarios. Aunque es un proyecto separado, está diseñado para consumir la API del backend y ofrecer una experiencia de usuario fluida para dos perfiles principales:\n\nPanel de Administración: Permite a los administradores registrar gastos, generar las cuotas de todo el condominio con un solo clic, validar pagos y gestionar la información de los residentes.\nPortal del Propietario: Ofrece a los residentes un acceso seguro para consultar su estado de cuenta, ver el desglose de sus cuotas y descargar sus recibos de pago en PDF en cualquier momento.\n\nEn conjunto, Octo-Condo demuestra la capacidad de construir una aplicación full-stack escalable y orientada a resolver un problema del mundo real, integrando lógica de negocio compleja, seguridad, y manipulación avanzada de documentos.",
-    "technologies": [
-      "NestJS",
-      "Node.js",
-      "TypeScript",
-      "Puppeteer",
-      "JWT",
-      "Next.js",
-      "React",
-      "Tailwind CSS"
-    ],
-    "githubUrl": "https://github.com/joset98/octo-condo-api-engine",
-    "liveUrl": "https://github.com/joset98/octo-condo-manager",
-    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
-  },
-  {
     "id": "choppi",
     "title": "Choppi | Marketplace E-commerce Full-Stack",
     "description": "Plataforma de e-commerce tipo marketplace diseñada de principio a fin, con una API RESTful en NestJS y una aplicación web en Next.js, simulando un entorno de mercado real con múltiples tiendas.",
@@ -70,6 +18,77 @@
     ],
     "githubUrl": "https://github.com/joset98/choppi-api-engine",
     "liveUrl": "https://github.com/joset98/choppi-web-app",
-    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
+    "imageUrl": "/placeholder.svg",
+    "galleryImages": [
+      "/placeholder.svg",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+      "/placeholder.svg"
+    ]
+  },
+  {
+    "id": "workspot",
+    "title": "WORKSPOT | Plataforma Ecosistema para Freelancers",
+    "description": "Workspot es una SPA de alto rendimiento diseñada para centralizar el flujo de trabajo entre empleadores y talentos. El proyecto destaca por replicar una arquitectura de software empresarial, priorizando la modularidad y la lógica de negocio compleja.",
+    "fullDescription": "Arquitectura Multi-rol: Sistema de permisos granulares para Administradores, Empleadores y Freelancers con dashboards dinámicos.\n\nFlujos de Usuario Complejos: Implementación de un Wizard de 10 pasos con manejo de estado avanzado para la publicación de proyectos.\n\nInteractividad Avanzada: Sistema de chat directo, gestión de propuestas en tiempo real y centro de notificaciones.\n\nStack Técnico: Next.js, TypeScript, Tailwind CSS y shadcn/ui. Gestión de estado global mediante React Context API y persistencia de datos en LocalStorage, logrando una experiencia \"Full Stack\" desde el frontend.",
+    "technologies": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "React Context API"
+    ],
+    "githubUrl": "https://github.com/joset98/workspot",
+    "liveUrl": "https://github.com/joset98/workspot",
+    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+    "galleryImages": [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+      "/placeholder.svg",
+      "/placeholder.svg"
+    ]
+  },
+  {
+    "id": "academic-react",
+    "title": "Academic Management App",
+    "description": "Este proyecto es una aplicación web completa para la gestión académica, diseñada para administrar de forma centralizada las operaciones de una institución educativa. La plataforma permite a diferentes tipos de usuarios (administradores, directores, profesores, estudiantes) interactuar con el sistema según sus roles y permisos.",
+    "fullDescription": "Características Principales:\nGestión Integral (CRUD): La aplicación soporta la creación, lectura, actualización y eliminación de entidades clave como:\nEstudiantes y Colaboradores (personal docente y administrativo).\nProgramas académicos y Materias.\nSalones, Cursos y Horarios.\nConceptos de pago, Preinscripciones y registro de Pagos.\nControl de Acceso Basado en Roles (RBAC): El sistema restringe el acceso a ciertas vistas y funcionalidades dependiendo del rol del usuario autenticado, garantizando la seguridad y la integridad de los datos.\nInterfaz de Usuario Moderna y Reutilizable: La interfaz, construida con componentes genéricos como GenericTable y FormModal, ofrece una experiencia de usuario limpia y eficiente. Se utiliza un sistema de notificaciones (toast) personalizado para dar feedback inmediato al usuario.\n\nImplementación Técnica y Arquitectura:\nEl proyecto está construido sobre Next.js y TypeScript, aprovechando el App Router para una estructura de enrutamiento moderna.\n\nUna de las características más destacadas es su arquitectura de datos del lado del cliente. Para simular un backend y gestionar la persistencia de datos sin necesidad de un servidor, se implementó un ingenioso sistema utilizando el localStorage del navegador.\n\nEste sistema se abstrae a través de un conjunto de hooks de React personalizados (useStudents, useCourses, usePrograms, etc.) ubicados en hooks/useDataStorage.ts. Cada hook se encarga de:\n\nCargar los datos desde localStorage al iniciar el componente.\nExponer el estado (ej. la lista de estudiantes) y las funciones para manipularlo (addStudent, updateStudent, deleteStudent).\nSincronizar y persistir automáticamente cualquier cambio en el estado de vuelta a localStorage.\nEste enfoque no solo demuestra un profundo conocimiento de los hooks de React (useState, useEffect, useCallback), sino que también es una solución elegante para crear aplicaciones complejas y con estado para un portafolio, centrando todo el desarrollo en el frontend.",
+    "technologies": [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "React Context API"
+    ],
+    "githubUrl": "https://github.com/joset98/academic-react",
+    "liveUrl": "https://github.com/joset98/academic-react",
+    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+    "galleryImages": [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+      "/placeholder.svg"
+    ]
+  },
+  {
+    "id": "octo-condo",
+    "title": "Octo-Condo: Sistema Full-Stack para la Gestión de Condominios",
+    "description": "Octo-Condo es una solución de software completa, diseñada bajo una arquitectura cliente-servidor, para automatizar y simplificar la administración de condominios. El sistema se compone de dos proyectos principales: un backend robusto (octo-condo-api-engine) y una interfaz de usuario intuitiva (octo-condo-manager).",
+    "fullDescription": "Backend (octo-condo-api-engine):\n\nDesarrollado con NestJS (Node.js/TypeScript), este motor es el cerebro de la aplicación. Sus responsabilidades clave incluyen:\n\nLógica de Negocio Centralizada: Automatiza el cálculo de las cuotas mensuales, prorrateando los gastos comunes entre las unidades según su alícuota y asignando gastos privados.\nAPI REST Segura: Expone endpoints para todas las operaciones, protegidos con autenticación basada en JWT y un sistema de roles (ADMIN, OWNER) que garantiza que los usuarios solo accedan a la información y acciones permitidas.\nGeneración Dinámica de PDF: Una de las características más destacadas es la capacidad de generar recibos de pago y reportes detallados en formato PDF. Utiliza Puppeteer para convertir plantillas HTML dinámicas, asegurando documentos profesionales y precisos.\nIntegración con Servicios Externos: Se conecta a APIs de terceros para obtener la tasa de cambio de moneda en tiempo real (ej. BCV), permitiendo presentar los montos en múltiples divisas (USD y Bs.) en los recibos, una funcionalidad crucial para el contexto venezolano.\n\nFrontend (octo-condo-manager):\n\nEs la aplicación web con la que interactúan los usuarios. Aunque es un proyecto separado, está diseñado para consumir la API del backend y ofrecer una experiencia de usuario fluida para dos perfiles principales:\n\nPanel de Administración: Permite a los administradores registrar gastos, generar las cuotas de todo el condominio con un solo clic, validar pagos y gestionar la información de los residentes.\nPortal del Propietario: Ofrece a los residentes un acceso seguro para consultar su estado de cuenta, ver el desglose de sus cuotas y descargar sus recibos de pago en PDF en cualquier momento.\n\nEn conjunto, Octo-Condo demuestra la capacidad de construir una aplicación full-stack escalable y orientada a resolver un problema del mundo real, integrando lógica de negocio compleja, seguridad, y manipulación avanzada de documentos.",
+    "technologies": [
+      "NestJS",
+      "Node.js",
+      "TypeScript",
+      "Puppeteer",
+      "JWT",
+      "Next.js",
+      "React",
+      "Tailwind CSS"
+    ],
+    "githubUrl": "https://github.com/joset98/octo-condo-api-engine",
+    "liveUrl": "https://github.com/joset98/octo-condo-manager",
+    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+    "galleryImages": [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+      "/placeholder.svg",
+      "/placeholder.svg"
+    ]
   }
 ]
