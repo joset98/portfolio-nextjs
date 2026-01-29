@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter, usePathname, useSearchParams } from "next/navigation"
 import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -10,21 +11,47 @@ import { Footer } from "./app/components/Footer"
 import { Header } from "./app/components/Header"
 import { SkillsSection } from "./app/components/Skills"
 import { Projects } from "./app/components/Projects"
+import { ProjectModal } from "./app/components/ProjectModal"
 import projectData from "./app/data/projects.json"
 import experienceData from "./app/data/experience.json"
 import skillsData from "./app/data/skills.json";
 
 export default function Portfolio() {
   const { setTheme, resolvedTheme } = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   const [experience, setExperience] = useState<Experience[]>(experienceData || [])
   const [projects, setProjects] = useState<Project[]>(projectData || [])
   const [skills, setSkills] = useState<Skills | null>(skillsData || null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  useEffect(() => {
+    const projectId = searchParams.get('project');
+    if (projectId) {
+      const projectToShow = projectData.find(p => p.id === projectId);
+      setSelectedProject(projectToShow || null);
+    } else {
+      setSelectedProject(null);
+    }
+  }, [searchParams]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleProjectClick = (project: Project) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('project', project.id);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleCloseModal = () => {
+    router.push(pathname, { scroll: false });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +59,7 @@ export default function Portfolio() {
     if (formStatus === 'loading') return;
 
     setFormStatus("loading");
-    // Simulate API call
+    
     setTimeout(() => {
       setFormStatus("success");
       setFormData({ name: "", email: "", message: "" });
@@ -212,7 +239,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <Projects projects={projects} />
+      <Projects projects={projects} onProjectClick={handleProjectClick}/>
 
       {/* Skills Section */}
       <SkillsSection skills={skills}/>
@@ -336,6 +363,9 @@ export default function Portfolio() {
 
       {/* Footer */}
       <Footer/>
+
+      {/* Project Modal */}
+      <ProjectModal project={selectedProject} onClose={handleCloseModal} />
     </div>
   )
 }

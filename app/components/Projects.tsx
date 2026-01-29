@@ -5,9 +5,10 @@ import { ProjectTechnologies } from "./ProjectTechnologies"
 
 interface ProjectsProps {
   projects: ProjectType[];
+  onProjectClick: (project: ProjectType) => void;
 }
 
-export function Projects({ projects }: ProjectsProps) {
+export function Projects({ projects, onProjectClick }: ProjectsProps) {
   return (
     <section id="projects" className="relative z-10 py-16 bg-background">
       <div className="container px-4 mx-auto">
@@ -15,23 +16,31 @@ export function Projects({ projects }: ProjectsProps) {
 
         <div className="space-y-16">
           {projects.map((project, index) => (
-            <div
+            <article
               key={project.id}
-              className={`flex flex-col items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+              className={`group flex flex-col items-center gap-8 ${
+                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+              }`}
             >
-              <div className="w-full md:w-1/2">
-                <Image
-                  src={project.imageUrl}
-                  alt={project.title}
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-lg"
-                />
+              <div className="w-full md:w-1/2" onClick={() => onProjectClick(project)}>
+                <div className="overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                  <Image
+                    src={project.imageUrl}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
               </div>
 
               <div className="w-full md:w-1/2">
-                <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
+                <h3 
+                  className="text-2xl font-bold mb-4 cursor-pointer hover:text-primary transition-colors"
+                  onClick={() => onProjectClick(project)}
+                >
+                  {project.title}
+                </h3>
                 <p className="text-gray-600 mb-6">{project.description}</p>
                 <ProjectTechnologies technologies={project.technologies} />
                 <div className="flex flex-wrap gap-4 mt-6">
@@ -55,7 +64,7 @@ export function Projects({ projects }: ProjectsProps) {
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
