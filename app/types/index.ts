@@ -1,9 +1,13 @@
 export type Project = {
+  id: string;
   title: string;
   description: string;
+  fullDescription: string;
   technologies: string[];
-  link: string;
-  image: string;
+  imageUrl: string;
+  liveUrl: string;
+  githubUrl: string;
+  galleryImages?: string[];
 };
 
 export type Experience = {

@@ -14,16 +14,16 @@ export function Header() {
 					<a href="#inicio" className="text-muted-foreground hover:text-primary font-bold">
 						Inicio
 					</a>
-					<a href="#experiencia" className="text-muted-foreground hover:text-primary font-bold">
+					<a href="#experience" className="text-muted-foreground hover:text-primary font-bold">
 						Experiencia
 					</a>
-					<a href="#proyectos" className="text-muted-foreground hover:text-primary font-bold">
+					<a href="#projects" className="text-muted-foreground hover:text-primary font-bold">
 						Proyectos
 					</a>
 					<a href="#skills" className="text-muted-foreground hover:text-primary font-bold">
 						Skills
 					</a>
-					<a href="#sobre-mi" className="text-muted-foreground hover:text-primary font-bold">
+					<a href="#about-me" className="text-muted-foreground hover:text-primary font-bold">
 						Sobre mí
 					</a>
 				</nav>
