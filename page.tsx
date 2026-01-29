@@ -5,13 +5,14 @@ import { useTheme } from "next-themes"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Github, Linkedin, FileText, Sun, Moon, ArrowRight, ArrowUpRight, Download } from "lucide-react"
-import projectData from "./app/data/projects.json"
-import experienceData from "./app/data/experience.json"
-import skillsData from "./app/data/skills.json";
 import { Experience, Project, Skills } from "./app/types"
 import { Footer } from "./app/components/Footer"
 import { Header } from "./app/components/Header"
 import { SkillsSection } from "./app/components/Skills"
+import { Projects } from "./app/components/Projects"
+import projectData from "./app/data/projects.json"
+import experienceData from "./app/data/experience.json"
+import skillsData from "./app/data/skills.json";
 
 export default function Portfolio() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -211,89 +212,13 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="proyectos" className="relative z-10 py-16 bg-background">
-        <div className="container px-4 mx-auto">
-          <h2 className="mb-8 text-5xl font-bold text-center">Ultimos Proyectos</h2>
-
-          {/* First Project */}
-          <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
-            <div className="w-full md:w-1/2">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
-                alt="Landing Page Company Yourle"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="w-full md:w-1/2">
-              <h3 className="text-2xl font-bold mb-4">Landing Page Company Yourle</h3>
-              <p className="text-gray-600 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.
-              </p>
-              <div className="flex gap-4">
-                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full">
-                  <ArrowUpRight size={25} />
-                  <span className="mr-2">Visitar</span>
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full"
-                >
-                  <Github size={25} />
-                  <span className="mr-2">
-                    Ver Código
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Second Project */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-            <div className="w-full md:w-1/2">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png"
-                alt="Landing Page Company Yourle"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="w-full md:w-1/2">
-              <h3 className="text-2xl font-bold mb-4">Landing Page Company Yourle</h3>
-              <p className="text-gray-600 mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.
-              </p>
-              <div className="flex gap-4">
-                <a href="#" className="inline-flex items-center gap-3 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full">
-                  <ArrowUpRight size={25} />
-                  <span className="mr-2">Visitar</span>
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-primary border border-primary border-pink-600 text-white hover:bg-pink-700 transition-colors rounded-full"
-                >
-                  <Github size={25} />
-                  <span className="mr-2">
-                    Ver Código
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Projects projects={projects} />
 
       {/* Skills Section */}
       <SkillsSection skills={skills}/>
 
       {/* About Me Section */}
-      <section id="sobre-mi" className="relative z-10 py-16 bg-background">
+      <section id="about-me" className="relative z-10 py-16 bg-background">
         <div className="container px-4 mx-auto">
           <h2 className="mb-8 text-5xl font-bold text-center">Sobre mí</h2>
 
