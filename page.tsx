@@ -2,10 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
-import { useTheme } from "next-themes"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Github, Linkedin, FileText, Sun, Moon, ArrowRight, ArrowUpRight, Download } from "lucide-react"
 import { Experience, Project, Skills } from "./app/types"
 import { Footer } from "./app/components/Footer"
 import { Header } from "./app/components/Header"
