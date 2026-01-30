@@ -17,6 +17,7 @@ export function ExperienceSection({ experience }: ExperienceProps) {
         </p>
 
         <div className="relative">
+          {/* Vertical center line */}
           <motion.div
             className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary origin-top"
             initial={{ scaleY: 0 }}
@@ -63,7 +64,7 @@ export function ExperienceSection({ experience }: ExperienceProps) {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background"
+                  className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-secondary/50"
                 ></motion.div>
 
                 <div className="hidden md:block flex-1"></div>
