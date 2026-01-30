@@ -83,8 +83,12 @@ export function ContactSection() {
                   </>
                 )}
               </button>
-              {formStatus === 'success' && <p className="mt-4 text-green-500">¡Mensaje enviado con éxito! Gracias por contactarme.</p>}
-              {formStatus === 'error' && <p className="mt-4 text-red-500">Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.</p>}
+              {formStatus === 'success' && (
+                <p className="mt-4 text-green-500">¡Mensaje enviado con éxito! Gracias por contactarme.</p>
+              )}
+              {formStatus === 'error' && (
+                <p className="mt-4 text-red-500">Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.</p>
+              )}
             </div>
           </div>
         </form>
