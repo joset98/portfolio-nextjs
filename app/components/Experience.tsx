@@ -7,9 +7,9 @@ interface ExperienceProps {
   experience: ExperienceType[];
 }
 
-export function Experience({ experience }: ExperienceProps) {
+export function ExperienceSection({ experience }: ExperienceProps) {
   return (
-    <section id="experiencia" className="relative z-10 py-16 bg-background">
+    <section id="experience" className="relative z-10 py-16 bg-background">
       <div className="container px-4 mx-auto">
         <h2 className="mb-8 text-5xl font-bold text-center">Experiencia</h2>
         <p className="max-w-3xl mx-auto mb-12 text-center text-muted-foreground">
