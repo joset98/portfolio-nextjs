@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ArrowUpRight, Github } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 import { Project as ProjectType } from "@/app/types";
@@ -57,7 +57,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
         >
           <motion.div
             initial={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -65,20 +65,20 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-3xl max-h-[90vh] p-8 mx-4 overflow-y-auto rounded-xl bg-card border border-border shadow-2xl"
+            className="relative w-full max-w-4xl max-h-[90vh] p-6 sm:p-8 overflow-y-auto rounded-xl bg-card border border-border shadow-2xl [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
               aria-label="Cerrar modal"
             >
               <X size={24} />
             </button>
 
-            <h2 className="text-3xl font-bold mb-4 text-primary">{project.title}</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-primary pr-10">{project.title}</h2>
 
             {/* Image Gallery */}
-            <div className="mb-6 space-y-4">
+            <div className="mb-8 space-y-4">
               <div className="relative group w-full overflow-hidden rounded-lg aspect-video bg-muted border">
                 {selectedImage && (
                   <Image
@@ -108,12 +108,12 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                 )}
               </div>
               {galleryImages.length > 1 && (
-                <div className="flex gap-2 pb-2 -mx-8 px-8 overflow-x-auto">
+                <div className="flex gap-2 pb-2 -mx-6 sm:-mx-8 px-6 sm:px-8 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   {galleryImages.map((imgUrl) => (
                     <button
                       key={imgUrl}
                       onClick={() => setSelectedImage(imgUrl)}
-                      className={`relative w-24 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all duration-200 ${
+                      className={`relative w-20 h-14 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all duration-200 ${
                         selectedImage === imgUrl ? 'border-primary scale-105' : 'border-transparent hover:border-primary/50'
                       }`}
                     >
@@ -124,9 +124,41 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               )}
             </div>
 
-            <div className="space-y-6">
-              <p className="text-muted-foreground whitespace-pre-line">{project.fullDescription}</p>
-              <ProjectTechnologies technologies={project.technologies} />
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-3 border-b border-border pb-2">Descripción</h3>
+                <p className="text-muted-foreground whitespace-pre-line pt-3">{project.fullDescription}</p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Tecnologías</h3>
+                <ProjectTechnologies technologies={project.technologies} />
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-4 border-t border-border">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 transition-colors"
+                  >
+                    <ArrowUpRight size={16} />
+                    <span>Visitar Sitio</span>
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground bg-secondary rounded-md hover:bg-secondary/80 transition-colors"
+                  >
+                    <Github size={16} />
+                    <span>Ver Código</span>
+                  </a>
+                )}
+              </div>
             </div>
           </motion.div>
         </motion.div>
