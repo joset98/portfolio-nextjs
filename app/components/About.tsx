@@ -19,7 +19,11 @@ export function AboutSection() {
               <li><span className="font-semibold">Modernización Arquitectónica:</span> Experto en migrar sistemas heredados hacia arquitecturas modernas basadas en Next.js, mejorando la mantenibilidad y la experiencia del usuario.</li>
             </ul>
             <div className="flex gap-4 pt-4">
-              <a href="/cv-jose-tovar.pdf" download className="inline-flex items-center gap-2 px-6 py-3 text-white bg-primary bg-pink-600 hover:bg-pink-700 transition-colors rounded-full">
+              <a 
+                href="/assets/cv/cv Jose Tovar.pdf"
+                download="CV - Jose Tovar.pdf"
+                className="inline-flex items-center gap-2 px-6 py-3 text-white bg-primary bg-pink-600 hover:bg-pink-700 transition-colors rounded-full"
+              >
                 <Download size={20} />
                 <span>Descargar CV</span>
               </a>

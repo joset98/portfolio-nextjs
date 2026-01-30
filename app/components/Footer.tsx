@@ -20,7 +20,11 @@ export function Footer() {
               </a>
             </div>
             <div className="shadow-md bg-white rounded p-1">
-              <a href="#" className="hover:opacity-75 transition-opacity">
+              <a
+                href="/assets/cv/cv Jose Tovar.pdf"
+                download="CV - Jose Tovar.pdf"
+                className="hover:opacity-75 transition-opacity"
+              >
                 <FileText size={24} className="text-primary" />
                 <span className="sr-only">Resume</span>
               </a>

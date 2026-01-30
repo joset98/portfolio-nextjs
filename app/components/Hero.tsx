@@ -40,7 +40,11 @@ export function HeroSection() {
           </a>
         </div>
         <div className="shadow-md bg-socialBtnBg rounded p-1">
-          <a href="#" className="text-primary hover:text-primary text-pink-600 hover:text-pink-700 hover:opacity-75 transition-opacity">
+          <a
+            href="/assets/cv/cv Jose Tovar.pdf"
+            download="CV - Jose Tovar.pdf"
+            className="text-primary hover:text-primary text-pink-600 hover:text-pink-700 hover:opacity-75 transition-opacity"
+          >
             <FileText size={24} />
             <span className="sr-only">Resume</span>
           </a>
