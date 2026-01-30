@@ -29,7 +29,7 @@
     "id": "workspot",
     "title": "WORKSPOT | Plataforma Ecosistema para Freelancers",
     "description": "Workspot es una SPA de alto rendimiento diseñada para centralizar el flujo de trabajo entre empleadores y talentos. El proyecto destaca por replicar una arquitectura de software empresarial, priorizando la modularidad y la lógica de negocio compleja.",
-    "fullDescription": "Arquitectura Multi-rol: Sistema de permisos granulares para Administradores, Empleadores y Freelancers con dashboards dinámicos.\n\nFlujos de Usuario Complejos: Implementación de un Wizard de 10 pasos con manejo de estado avanzado para la publicación de proyectos.\n\nInteractividad Avanzada: Sistema de chat directo, gestión de propuestas en tiempo real y centro de notificaciones.\n\nStack Técnico: Next.js, TypeScript, Tailwind CSS y shadcn/ui. Gestión de estado global mediante React Context API y persistencia de datos en LocalStorage, logrando una experiencia \"Full Stack\" desde el frontend.",
+    "fullDescription": "Arquitectura Multi-rol: Sistema de permisos granulares para Administradores, Empleadores y Freelancers con dashboards dinámicos.\n\nFlujos de Usuario Complejos: Implementación de un Wizard de 10 pasos con manejo de estado avanzado para la publicación de proyectos.\n\nInteractividad Avanzada: Sistema de chat directo, gestión de propuestas en tiempo real y centro de notificaciones.",
     "technologies": [
       "React",
       "Next.js",
