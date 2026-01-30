@@ -36,7 +36,7 @@ export function AboutSection() {
               <p className="text-muted-foreground">Años de experiencia</p>
             </div>
             <div className="p-6 text-center border rounded-lg border-border">
-              <h3 className="mb-2 text-4xl font-bold text-primary">15+</h3>
+              <h3 className="mb-2 text-4xl font-bold text-primary">5+</h3>
               <p className="text-muted-foreground">Proyectos completados</p>
             </div>
             <div className="col-span-2 p-6 text-center border rounded-lg border-border">
