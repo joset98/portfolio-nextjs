@@ -113,9 +113,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                     <button
                       key={imgUrl}
                       onClick={() => setSelectedImage(imgUrl)}
-                      className={`relative w-20 h-14 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all duration-200 ${
-                        selectedImage === imgUrl ? 'border-primary scale-105' : 'border-transparent hover:border-primary/50'
-                      }`}
+                      className={`relative w-20 h-14 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all duration-200 ${selectedImage === imgUrl ? 'border-primary scale-105' : 'border-transparent hover:border-primary/50'
+                        }`}
                     >
                       <Image src={imgUrl} alt={`Miniatura de ${project.title}`} fill className="object-cover" />
                     </button>
@@ -127,7 +126,25 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             <div className="space-y-8">
               <div>
                 <h3 className="text-xl font-semibold mb-3 border-b border-border pb-2">Descripción</h3>
-                <p className="text-muted-foreground whitespace-pre-line pt-3">{project.fullDescription}</p>
+                <p className="text-muted-foreground whitespace-pre-line leading-relaxed text-sm sm:text-base pt-3">
+                  {
+                    project.fullDescription.split('\\n').map((line, index) => {
+                      if (line.trim().endsWith(':')) {
+                        return (
+                          <h4 key={index} className="font-bold text-foreground mt-4 mb-2">
+                            {line}
+                          </h4>
+                        );
+                      }
+
+                      return (
+                        <p key={index} className="mb-1 ml-2">
+                          {line}
+                        </p>
+                      );
+                    })
+                  }
+                </p>
               </div>
 
               <div>
