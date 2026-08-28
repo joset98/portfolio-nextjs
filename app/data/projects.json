@@ -18,11 +18,16 @@
     ],
     "githubUrl": "https://github.com/joset98/choppi-api-engine",
     "liveUrl": "https://github.com/joset98/choppi-web-app",
-    "imageUrl": "/placeholder.svg",
+    "imageUrl": "/assets/projects/choppi/choppi_login.PNG",
     "galleryImages": [
-      "/placeholder.svg",
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
-      "/placeholder.svg"
+      "/assets/projects/choppi/choppi_admin_create_product.PNG",
+      "/assets/projects/choppi/choppi_admin_products.PNG",
+      "/assets/projects/choppi/choppi_admin_stores.PNG",
+      "/assets/projects/choppi/choppi_landing.PNG",
+      "/assets/projects/choppi/choppi_login.PNG",
+      "/assets/projects/choppi/choppi_purchase_cart.PNG",
+      "/assets/projects/choppi/choppi_shops.PNG",
+      "/assets/projects/choppi/choppi_store_products.PNG"
     ]
   },
   {
@@ -40,11 +45,43 @@
     ],
     "githubUrl": "https://github.com/joset98/workspot",
     "liveUrl": "https://github.com/joset98/workspot",
-    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+    "imageUrl": "/assets/projects/workspot/workspot_login.PNG",
     "galleryImages": [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
-      "/placeholder.svg",
-      "/placeholder.svg"
+      "/assets/projects/workspot/workspot_chat.PNG",
+      "/assets/projects/workspot/workspot_consult_1.PNG",
+      "/assets/projects/workspot/workspot_consult_2.PNG",
+      "/assets/projects/workspot/workspot_consult_3.PNG",
+      "/assets/projects/workspot/workspot_consult_4.PNG",
+      "/assets/projects/workspot/workspot_footer.PNG",
+      "/assets/projects/workspot/workspot_forgot_password.PNG",
+      "/assets/projects/workspot/workspot_header_auth.PNG",
+      "/assets/projects/workspot/workspot_header.PNG",
+      "/assets/projects/workspot/workspot_login.PNG",
+      "/assets/projects/workspot/workspot_project_list_1.PNG",
+      "/assets/projects/workspot/workspot_project_list_2.PNG",
+      "/assets/projects/workspot/workspot_project_panel_freelancer.PNG",
+      "/assets/projects/workspot/workspot_project_panel_project_contact.PNG",
+      "/assets/projects/workspot/workspot_project_panel.PNG",
+      "/assets/projects/workspot/workspot_project_reg_1.PNG",
+      "/assets/projects/workspot/workspot_project_reg_2.PNG",
+      "/assets/projects/workspot/workspot_project_reg_3.PNG",
+      "/assets/projects/workspot/workspot_project_reg_4.PNG",
+      "/assets/projects/workspot/workspot_project_reg_5.PNG",
+      "/assets/projects/workspot/workspot_project_reg_6.PNG",
+      "/assets/projects/workspot/workspot_project_reg_7.PNG",
+      "/assets/projects/workspot/workspot_project_reg_8.PNG",
+      "/assets/projects/workspot/workspot_proposal_1.PNG",
+      "/assets/projects/workspot/workspot_proposal_2.PNG",
+      "/assets/projects/workspot/workspot_proposal_3.PNG",
+      "/assets/projects/workspot/workspot_proposal_4.PNG",
+      "/assets/projects/workspot/workspot_register.PNG",
+      "/assets/projects/workspot/workspot_reset_password.PNG",
+      "/assets/projects/workspot/workspot_user_dashboard.PNG",
+      "/assets/projects/workspot/workspot_user_profile_1.PNG",
+      "/assets/projects/workspot/workspot_user_profile_2.PNG",
+      "/assets/projects/workspot/workspot_user_profile_3.PNG",
+      "/assets/projects/workspot/workspot_user_profile_4.PNG",
+      "/assets/projects/workspot/workspot_user_profile_5.PNG"
     ]
   },
   {
@@ -61,10 +98,14 @@
     ],
     "githubUrl": "https://github.com/joset98/academic-react",
     "liveUrl": "https://github.com/joset98/academic-react",
-    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+    "imageUrl": "/assets/projects/academic/academic_dashboard.PNG",
     "galleryImages": [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
-      "/placeholder.svg"
+      "/assets/projects/academic/academic_dashboard.PNG",
+      "/assets/projects/academic/academic_add_new_student.PNG",
+      "/assets/projects/academic/academic_preinscripcion.PNG",
+      "/assets/projects/academic/academic_manager.PNG",
+      "/assets/projects/academic/academic_login.PNG",
+      "/assets/projects/academic/academic_courses.PNG"
     ]
   },
   {
@@ -84,11 +125,47 @@
     ],
     "githubUrl": "https://github.com/joset98/octo-condo-api-engine",
     "liveUrl": "https://github.com/joset98/octo-condo-manager",
-    "imageUrl": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
+    "imageUrl": "/assets/projects/condo/condo_dashboard_condo.PNG",
     "galleryImages": [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1VowrrelEJvIlK2CU1tLluQdL5Aq4P.png",
-      "/placeholder.svg",
-      "/placeholder.svg"
+      "/assets/projects/condo/condo_dashboard_condo.PNG",
+      "/assets/projects/condo/condo_add_condo.PNG",
+      "/assets/projects/condo/condo_common_areas.PNG",
+      "/assets/projects/condo/condo_dashboard.PNG",
+      "/assets/projects/condo/condo_expenses.PNG",
+      "/assets/projects/condo/condo_generate_quotes_form.PNG",
+      "/assets/projects/condo/condo_generate_quotes.PNG",
+      "/assets/projects/condo/condo_login.PNG",
+      "/assets/projects/condo/condo_quote_details.PNG",
+      "/assets/projects/condo/condo_register_expenses.PNG"
+    ]
+  },
+  {
+    "id": "medisync",
+    "title": "MediSync | Sistema Integral de Gestión Médica y Emergencias",
+    "description": "Plataforma omnicanal de salud que conecta a pacientes y médicos. Permite la gestión completa de citas y horarios vía web, e incluye una aplicación móvil multiplataforma con un botón de pánico para emergencias.",
+    "fullDescription": "Características Principales:\n- Ecosistema Omnicanal: Solución compuesta por un panel web administrativo/médico y una aplicación móvil orientada a la asistencia inmediata del paciente.\n- Portal Médico y Gestión de Horarios: Dashboard dedicado donde los doctores pueden administrar sus calendarios, definir disponibilidad, aceptar citas y gestionar el historial de consultas de manera centralizada.\n- Sistema de Alerta de Emergencia (Botón de Pánico): Funcionalidad crítica en la app móvil que permite a los pacientes solicitar asistencia inmediata con un solo toque, agilizando la respuesta médica.\n- Agendamiento Inteligente: Flujo intuitivo para que los pacientes busquen especialistas, consulten disponibilidad en tiempo real y agenden citas sin fricciones.\n\nArquitectura Técnica:\n1. Backend (NestJS): API RESTful robusta conectada a PostgreSQL mediante TypeORM. Maneja la lógica de negocio compleja, el solapamiento de horarios y la autenticación segura (JWT).\n2. Frontend Web (Next.js): Aplicación optimizada para médicos y administradores, construida con React y Tailwind CSS para ofrecer una interfaz limpia y dashboards interactivos.\n3. App Móvil (Flutter): Aplicación multiplataforma (iOS/Android) de alto rendimiento, desarrollada en Dart, que consume la misma API central e integra servicios nativos para el manejo del botón de emergencia.",
+    "technologies": [
+      "NestJS",
+      "Next.js",
+      "Flutter",
+      "PostgreSQL",
+      "TypeScript",
+      "Dart",
+      "TypeORM",
+      "Tailwind CSS",
+      "JWT"
+    ],
+    "githubUrl": "https://github.com/joset98/medic-hmc",
+    "liveUrl": "https://github.com/joset98/medic-hmc",
+    "imageUrl": "/assets/projects/medic/patient_history.PNG",
+    "galleryImages": [
+      "/assets/projects/medic/agenda_doctor_appointment.PNG",
+      "/assets/projects/medic/available_schedules_patients.PNG",
+      "/assets/projects/medic/create_patient_form.PNG",
+      "/assets/projects/medic/mobile_chat_medical consultation.PNG",
+      "/assets/projects/medic/mobile_prescribed_treatments.PNG",
+      "/assets/projects/medic/patient_history.PNG",
+      "/assets/projects/medic/patients_list.PNG"
     ]
   }
 ]
