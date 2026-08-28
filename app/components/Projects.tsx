@@ -12,7 +12,7 @@ export function Projects({ projects, onProjectClick }: ProjectsProps) {
   return (
     <section id="projects" className="relative z-10 py-16 bg-background">
       <div className="container px-4 mx-auto">
-        <h2 className="mb-8 text-5xl font-bold text-center">Ultimos Proyectos</h2>
+        <h2 className="mb-8 text-5xl font-bold text-center">Últimos Proyectos</h2>
 
         <div className="space-y-16">
           {projects.map((project, index) => (
@@ -23,13 +23,14 @@ export function Projects({ projects, onProjectClick }: ProjectsProps) {
               }`}
             >
               <div className="w-full md:w-1/2" onClick={() => onProjectClick(project)}>
-                <div className="overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-lg cursor-pointer">
+
                   <Image
                     src={project.imageUrl}
                     alt={project.title}
-                    width={600}
-                    height={400}
-                    className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               </div>
