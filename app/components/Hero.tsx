@@ -16,7 +16,7 @@ export function HeroSection() {
       <h2 className="mb-2 text-2xl font-bold">Hey, Soy Jose</h2>
       <h1 className="mb-6 text-5xl font-black tracking-tight uppercase">Fullstack Engineer</h1>
       <p className="max-w-lg mb-8 text-gray-600">
-        Ingeniero de Software Fullstack con +4 años de experiencia optimizando soluciones web. Experto en el stack Node.js/React/PHP, he logrado reducir tiempos de carga en un 30% y elevar la fiabilidad del sistema en un 15% mediante ingeniería de calidad.
+        Ingeniero de Software Fullstack con +6 años de experiencia optimizando soluciones web. Experto en el stack Node.js/React/PHP, he logrado reducir tiempos de carga en un 30% y elevar la fiabilidad del sistema en un 15% mediante ingeniería de calidad.
       </p>
       <button className="px-6 py-3 mb-12 text-white rounded-full bg-primary bg-pink-600 hover:bg-pink-700 transition-colors">
         <a className="flex justify-between gap-2" href="#contact">

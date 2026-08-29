@@ -10,7 +10,7 @@ export function AboutSection() {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-primary">Resumen Profesional</h3>
             <p className="text-muted-foreground">
-              Soy un Ingeniero de Software Fullstack apasionado por construir soluciones web escalables y de alto rendimiento. Con más de 4 años de experiencia, me especializo en el ecosistema de Node.js, React y PHP, liderando proyectos desde la arquitectura inicial hasta la gestión avanzada de bases de datos.
+              Soy un Ingeniero de Software Fullstack apasionado por construir soluciones web escalables y de alto rendimiento. Con más de 6 años de experiencia, me especializo en el ecosistema de Node.js, React y PHP, liderando proyectos desde la arquitectura inicial hasta la gestión avanzada de bases de datos.
             </p>
             <h3 className="pt-4 text-2xl font-bold text-primary">Lo que aporto a los proyectos</h3>
             <ul className="space-y-2 text-sm list-disc list-inside text-muted-foreground">
