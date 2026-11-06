@@ -27,6 +27,7 @@ Light is the default; dark is opt-in from the header.
 - Plain labels: Experience, Projects, Stack, Measured impact. No metaphors a recruiter has to decode.
 - Motion: indicator figures count up once on load, experience rows expand (`<details>`), project images zoom slightly on hover, and the modal fades in. `prefers-reduced-motion` turns all of it off.
 - Contact (email, copy, LinkedIn, CV) shows in the first viewport and again at the end. Never put a fake form here.
+- Language: the server picks it from the `lang` cookie (saved by the switch), then the browser's `Accept-Language`, then English (`app/seo.ts`). Title, description and `<html lang>` follow it.
 - All copy comes from `app/i18n.tsx` (ES/EN) and `app/data/*.json`. Every figure must trace back to `experience.json`.
 
 ## Rasters

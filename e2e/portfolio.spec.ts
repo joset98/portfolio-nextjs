@@ -24,13 +24,36 @@ test("project modal opens on click, closes with Escape, and opens from a deep li
   await expect(page.getByRole("dialog")).toBeVisible()
 })
 
-test("language switch toggles copy and the html lang attribute", async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem("lang", "es"))
+test("server picks the language from the browser and sends matching title, description and lang", async ({ request }) => {
+  const es = await (await request.get("/", { headers: { "accept-language": "es-VE,es;q=0.9,en;q=0.8" } })).text()
+  expect(es).toContain('<html lang="es"')
+  expect(es).toContain("con 6+ años")
+  expect(es).toContain("Construyo sistemas")
+
+  const en = await (await request.get("/", { headers: { "accept-language": "en-US,en;q=0.9" } })).text()
+  expect(en).toContain('<html lang="en"')
+  expect(en).toContain("with 6+ years")
+  expect(en).toContain("I build")
+
+  // No header (crawlers) falls back to English; a saved cookie beats the browser language.
+  expect(await (await request.get("/", { headers: { "accept-language": "" } })).text()).toContain('<html lang="en"')
+  const saved = await (await request.get("/", { headers: { "accept-language": "en-US", cookie: "lang=es" } })).text()
+  expect(saved).toContain('<html lang="es"')
+})
+
+test("language switch updates copy, title, description and is remembered", async ({ browser }) => {
+  const context = await browser.newContext({ locale: "es-ES" })
+  const page = await context.newPage()
   await page.goto("/")
   await expect(page.locator("html")).toHaveAttribute("lang", "es")
   await page.getByRole("button", { name: "English" }).click()
   await expect(page.locator("html")).toHaveAttribute("lang", "en")
   await expect(page.getByRole("heading", { level: 2 }).first()).toContainText("I build")
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /with 6\+ years/)
+
+  await page.reload()
+  await expect(page.locator("html")).toHaveAttribute("lang", "en")
+  await context.close()
 })
 
 test("no horizontal scroll on a phone", async ({ page }) => {

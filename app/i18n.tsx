@@ -7,7 +7,8 @@ import projectsEs from "@/app/data/projects.json"
 import skillsEs from "@/app/data/skills.json"
 import en from "@/app/data/en.json"
 
-export type Lang = "es" | "en"
+import { SEO, type Lang } from "@/app/seo"
+export type { Lang }
 
 export const CONTACT = {
   email: "jtovar26455462@gmail.com",
@@ -174,20 +175,19 @@ function localize(lang: Lang) {
 type Ctx = { lang: Lang; setLang: (l: Lang) => void }
 const LangCtx = createContext<Ctx>({ lang: "es", setLang: () => {} })
 
-export function LangProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>("es")
+// The server picks the first language (cookie, then Accept-Language); a manual switch is saved in the cookie.
+export function LangProvider({ initialLang, children }: { initialLang: Lang; children: React.ReactNode }) {
+  const [lang, setLangState] = useState<Lang>(initialLang)
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("lang")
-      if (saved === "es" || saved === "en") setLang(saved)
-      else if (navigator.language.toLowerCase().startsWith("en")) setLang("en")
-    } catch {}
-  }, [])
+  const setLang = (l: Lang) => {
+    setLangState(l)
+    document.cookie = `lang=${l}; path=/; max-age=31536000; samesite=lax`
+  }
 
   useEffect(() => {
     document.documentElement.lang = lang
-    try { localStorage.setItem("lang", lang) } catch {}
+    document.title = SEO[lang].title
+    document.querySelector('meta[name="description"]')?.setAttribute("content", SEO[lang].description)
   }, [lang])
 
   return <LangCtx.Provider value={{ lang, setLang }}>{children}</LangCtx.Provider>
