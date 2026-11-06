@@ -25,7 +25,7 @@ Day edition is the default (`defaultTheme="light"`); night is opt-in from the ma
 
 - Square corners, no shadows, no gradients. A rule (border) does the work of elevation.
 - One ink color. Green and red appear only on deltas.
-- Motion: ledger rows expand (`<details>`), project images zoom slightly on hover, and the modal fades in. Nothing else moves, and `prefers-reduced-motion` turns transitions off.
+- Motion: indicator figures count up once on load, ledger rows expand (`<details>`), project images zoom slightly on hover, and the modal fades in. Nothing else moves, and `prefers-reduced-motion` turns all of it off.
 - Contact (email, copy, LinkedIn, CV) shows in the first viewport and again at the end. Never put a fake form here.
 - All copy comes from `app/i18n.tsx` (ES/EN) and `app/data/*.json`. Every figure must trace back to `experience.json`.
 
