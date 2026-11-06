@@ -34,27 +34,97 @@
     "choppi": {
       "title": "Choppi | Full-Stack Marketplace E-commerce",
       "description": "End-to-end marketplace e-commerce platform with a RESTful API in NestJS and a Next.js web app, simulating a real multi-store market.",
-      "fullDescription": "Highlights:\n- Complete full-stack solution: from the database to the user interface.\n- Working admin panel: protected interface for CRUD operations on stores and products.\n- Advanced shopping cart: localStorage persistence with real-time price and stock recalculation.\n- Secure authentication and authorization (RBAC): JWT-based flow with roles (Admin/User) and HttpOnly cookies.\n\nTechnical architecture:\n1. Backend (NestJS): modular API with TypeORM (PostgreSQL), Passport.js (JWT, bcrypt) and automatic Swagger docs.\n2. Frontend (Next.js): App Router with SSR/CSR, Tailwind CSS and shadcn/ui, React Context state and form validation with React Hook Form and Zod. Uses a proxy pattern in API Routes for secure communication with the backend."
+      "fullDescription": "Highlights:\n- Complete full-stack solution: from the database to the user interface.\n- Working admin panel: protected interface for CRUD operations on stores and products.\n- Advanced shopping cart: localStorage persistence with real-time price and stock recalculation.\n- Secure authentication and authorization (RBAC): JWT-based flow with roles (Admin/User) and HttpOnly cookies.\n\nTechnical architecture:\n1. Backend (NestJS): modular API with TypeORM (PostgreSQL), Passport.js (JWT, bcrypt) and automatic Swagger docs.\n2. Frontend (Next.js): App Router with SSR/CSR, Tailwind CSS and shadcn/ui, React Context state and form validation with React Hook Form and Zod. Uses a proxy pattern in API Routes for secure communication with the backend.",
+      "metrics": [
+        {
+          "value": "2",
+          "label": "apps: API + web"
+        },
+        {
+          "value": "2",
+          "label": "RBAC roles"
+        },
+        {
+          "value": "HttpOnly",
+          "label": "JWT cookie"
+        }
+      ]
     },
     "workspot": {
       "title": "WORKSPOT | Freelancer Ecosystem Platform",
       "description": "Workspot is a high-performance SPA that centralizes the workflow between employers and talent. It mirrors an enterprise software architecture, prioritizing modularity and complex business logic.",
-      "fullDescription": "Multi-role architecture: granular permissions for Admins, Employers and Freelancers with dynamic dashboards.\n\nComplex user flows: a 10-step wizard with advanced state handling for publishing projects.\n\nAdvanced interactivity: direct chat, real-time proposal management and a notification center."
+      "fullDescription": "Multi-role architecture: granular permissions for Admins, Employers and Freelancers with dynamic dashboards.\n\nComplex user flows: a 10-step wizard with advanced state handling for publishing projects.\n\nAdvanced interactivity: direct chat, real-time proposal management and a notification center.",
+      "metrics": [
+        {
+          "value": "3",
+          "label": "roles with dashboards"
+        },
+        {
+          "value": "10",
+          "label": "wizard steps"
+        },
+        {
+          "value": "35",
+          "label": "screens"
+        }
+      ]
     },
     "academic-react": {
       "title": "Academic Management App",
       "description": "A complete web app for academic management that centralizes an institution's operations. Admins, directors, teachers and students interact with the system according to their roles and permissions.",
-      "fullDescription": "Main features:\nFull CRUD for students and staff, academic programs and subjects, classrooms, courses and schedules, payment concepts, pre-enrollments and payments.\nRole-based access control (RBAC): views and actions are restricted by the authenticated user's role.\nReusable UI: generic components such as GenericTable and FormModal, plus a custom toast notification system.\n\nImplementation and architecture:\nBuilt on Next.js and TypeScript with the App Router.\nClient-side data architecture: a localStorage persistence layer abstracted behind custom React hooks (useStudents, useCourses, usePrograms…) in hooks/useDataStorage.ts. Each hook loads data on mount, exposes state and mutators (addStudent, updateStudent, deleteStudent) and syncs every change back to localStorage."
+      "fullDescription": "Main features:\nFull CRUD for students and staff, academic programs and subjects, classrooms, courses and schedules, payment concepts, pre-enrollments and payments.\nRole-based access control (RBAC): views and actions are restricted by the authenticated user's role.\nReusable UI: generic components such as GenericTable and FormModal, plus a custom toast notification system.\n\nImplementation and architecture:\nBuilt on Next.js and TypeScript with the App Router.\nClient-side data architecture: a localStorage persistence layer abstracted behind custom React hooks (useStudents, useCourses, usePrograms…) in hooks/useDataStorage.ts. Each hook loads data on mount, exposes state and mutators (addStudent, updateStudent, deleteStudent) and syncs every change back to localStorage.",
+      "metrics": [
+        {
+          "value": "10",
+          "label": "CRUD entities"
+        },
+        {
+          "value": "4",
+          "label": "roles"
+        },
+        {
+          "value": "0",
+          "label": "servers"
+        }
+      ]
     },
     "octo-condo": {
       "title": "Octo-Condo: Full-Stack Condominium Management",
       "description": "Octo-Condo is a client-server solution that automates condominium administration, made of a NestJS backend (octo-condo-api-engine) and a web interface (octo-condo-manager).",
-      "fullDescription": "Backend (octo-condo-api-engine):\nCentralized business logic: automates monthly fee calculation, prorating common expenses across units by share and assigning private expenses.\nSecure REST API: JWT authentication and roles (ADMIN, OWNER).\nDynamic PDF generation: payment receipts and detailed reports rendered from HTML templates with Puppeteer.\nExternal services: real-time exchange rates (e.g. BCV) to show amounts in USD and Bs.\n\nFrontend (octo-condo-manager):\nAdmin panel: record expenses, generate the whole condominium's fees in one click, validate payments and manage residents.\nOwner portal: secure access to account statements, fee breakdowns and PDF receipts."
+      "fullDescription": "Backend (octo-condo-api-engine):\nCentralized business logic: automates monthly fee calculation, prorating common expenses across units by share and assigning private expenses.\nSecure REST API: JWT authentication and roles (ADMIN, OWNER).\nDynamic PDF generation: payment receipts and detailed reports rendered from HTML templates with Puppeteer.\nExternal services: real-time exchange rates (e.g. BCV) to show amounts in USD and Bs.\n\nFrontend (octo-condo-manager):\nAdmin panel: record expenses, generate the whole condominium's fees in one click, validate payments and manage residents.\nOwner portal: secure access to account statements, fee breakdowns and PDF receipts.",
+      "metrics": [
+        {
+          "value": "58",
+          "label": "REST endpoints"
+        },
+        {
+          "value": "119",
+          "label": "unit tests"
+        },
+        {
+          "value": "2",
+          "label": "currencies per receipt"
+        }
+      ]
     },
     "medisync": {
       "title": "MediSync | Medical & Emergency Management System",
       "description": "Omnichannel health platform connecting patients and doctors: web scheduling for appointments and availability, plus a cross-platform mobile app with an emergency panic button.",
-      "fullDescription": "Main features:\n- Omnichannel ecosystem: an admin/doctor web panel and a patient-facing mobile app.\n- Doctor portal: manage calendars, availability, appointments and consultation history.\n- Emergency alert (panic button): patients request immediate assistance with one tap.\n- Smart scheduling: find specialists, check real-time availability and book without friction.\n\nTechnical architecture:\n1. Backend (NestJS): RESTful API on PostgreSQL via TypeORM, handling schedule overlaps and JWT auth.\n2. Web frontend (Next.js): React and Tailwind CSS dashboards for doctors and admins.\n3. Mobile app (Flutter): iOS/Android app in Dart consuming the same API, with native services for the emergency button."
+      "fullDescription": "Main features:\n- Omnichannel ecosystem: an admin/doctor web panel and a patient-facing mobile app.\n- Doctor portal: manage calendars, availability, appointments and consultation history.\n- Emergency alert (panic button): patients request immediate assistance with one tap.\n- Smart scheduling: find specialists, check real-time availability and book without friction.\n\nTechnical architecture:\n1. Backend (NestJS): RESTful API on PostgreSQL via TypeORM, handling schedule overlaps and JWT auth.\n2. Web frontend (Next.js): React and Tailwind CSS dashboards for doctors and admins.\n3. Mobile app (Flutter): iOS/Android app in Dart consuming the same API, with native services for the emergency button.",
+      "metrics": [
+        {
+          "value": "3",
+          "label": "clients, 1 API"
+        },
+        {
+          "value": "1 tap",
+          "label": "panic button"
+        },
+        {
+          "value": "iOS + Android",
+          "label": "Flutter app"
+        }
+      ]
     }
   },
   "skills": {

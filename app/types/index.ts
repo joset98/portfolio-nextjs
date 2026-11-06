@@ -8,6 +8,7 @@ export type Project = {
   liveUrl: string;
   githubUrl: string;
   galleryImages?: string[];
+  metrics?: { value: string; label: string }[];
 };
 
 export type Experience = {

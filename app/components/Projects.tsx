@@ -21,6 +21,7 @@ export function Projects({ onProjectClick }: { onProjectClick: (project: Project
             <Meta project={lead} />
             <h3 className="mt-2 font-display text-3xl font-bold leading-tight sm:text-4xl">{lead.title}</h3>
             <p className="mt-4 text-lg leading-relaxed">{lead.description}</p>
+            <Metrics project={lead} />
             <Stack items={lead.technologies} />
             <Actions project={lead} onOpen={() => onProjectClick(lead)} />
           </div>
@@ -38,6 +39,7 @@ export function Projects({ onProjectClick }: { onProjectClick: (project: Project
               <Meta project={p} />
               <h3 className="mt-1 font-display text-xl font-bold leading-snug">{p.title}</h3>
               <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground line-clamp-3">{p.description}</p>
+              <Metrics project={p} small />
               <Stack items={p.technologies.slice(0, 5)} />
               <Actions project={p} onOpen={() => onProjectClick(p)} />
             </div>
@@ -93,5 +95,19 @@ function Actions({ project, onOpen }: { project: Project; onOpen: () => void }) 
         </a>
       ))}
     </div>
+  )
+}
+
+function Metrics({ project, small }: { project: Project; small?: boolean }) {
+  if (!project.metrics?.length) return null
+  return (
+    <dl className="grid grid-cols-3 gap-3 mt-4 border-t border-border pt-3">
+      {project.metrics.map((m) => (
+        <div key={m.label} className="flex flex-col-reverse justify-end">
+          <dt className="mt-1 text-xs leading-snug text-muted-foreground">{m.label}</dt>
+          <dd className={`font-display font-bold leading-none num ${small ? "text-lg" : "text-2xl"}`}>{m.value}</dd>
+        </div>
+      ))}
+    </dl>
   )
 }
