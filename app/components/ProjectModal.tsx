@@ -1,9 +1,11 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, ArrowUpRight, Github } from "lucide-react";
+"use client"
+
+import { X, ChevronLeft, ChevronRight, Github } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Project as ProjectType } from "@/app/types";
-import { ProjectTechnologies } from "./ProjectTechnologies";
+import { useLang } from "@/app/i18n";
+import { repoLinks } from "./Projects";
 
 interface ProjectModalProps {
   project: ProjectType | null;
@@ -11,175 +13,125 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const { t, projects } = useLang();
+  // Re-read from the localized list so the modal follows the language switch.
+  const p = project ? projects.find((x) => x.id === project.id) ?? project : null;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
-  const galleryImages = project
-    ? Array.from(new Set([project.imageUrl, ...(project.galleryImages || [])]))
-    : [];
+  const galleryImages = p ? Array.from(new Set([p.imageUrl, ...(p.galleryImages || [])])) : [];
 
   useEffect(() => {
-    if (project?.imageUrl) {
-      setSelectedImage(project.imageUrl);
-    }
-  }, [project]);
+    if (p?.imageUrl) setSelectedImage(p.imageUrl);
+    if (p) closeRef.current?.focus();
+    document.body.style.overflow = p ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [p?.id]);
 
   const handleImageNavigation = useCallback((direction: 'next' | 'prev') => {
     if (galleryImages.length <= 1 || !selectedImage) return;
-
-    const currentIndex = galleryImages.indexOf(selectedImage);
-    let nextIndex;
-
-    if (direction === 'next') {
-      nextIndex = (currentIndex + 1) % galleryImages.length;
-    } else {
-      nextIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    }
-    setSelectedImage(galleryImages[nextIndex]);
+    const i = galleryImages.indexOf(selectedImage);
+    const n = direction === 'next' ? (i + 1) % galleryImages.length : (i - 1 + galleryImages.length) % galleryImages.length;
+    setSelectedImage(galleryImages[n]);
   }, [galleryImages, selectedImage]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!project) return;
+      if (!p) return;
       if (e.key === 'ArrowRight') handleImageNavigation('next');
       else if (e.key === 'ArrowLeft') handleImageNavigation('prev');
       else if (e.key === 'Escape') onClose();
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [project, handleImageNavigation, onClose]);
+  }, [p, handleImageNavigation, onClose]);
+
+  const index = selectedImage ? galleryImages.indexOf(selectedImage) + 1 : 1;
 
   return (
-    <AnimatePresence>
-      {project && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+    <>
+      {p && (
+        <div
           onClick={onClose}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          className="animate-in fade-in duration-200 fixed inset-0 z-50 flex items-center justify-center p-2 bg-foreground/80 sm:p-6"
         >
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0, y: 20 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-title"
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-4xl max-h-[90vh] p-6 sm:p-8 overflow-y-auto rounded-xl bg-card border border-border shadow-2xl [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="relative w-full max-w-5xl max-h-[94vh] overflow-y-auto bg-background border-2 border-foreground"
           >
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-              aria-label="Cerrar modal"
-            >
-              <X size={24} />
-            </button>
+            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-5 py-4 border-b border-foreground bg-background sm:px-8">
+              <h2 id="project-title" className="font-display text-2xl font-bold leading-tight sm:text-3xl">{p.title}</h2>
+              <button ref={closeRef} onClick={onClose} className="p-2 -m-2 shrink-0 hover:opacity-70" aria-label={t.close}>
+                <X size={24} />
+              </button>
+            </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-primary pr-10">{project.title}</h2>
-
-            {/* Image Gallery */}
-            <div className="mb-8 space-y-4">
-              <div className="relative group w-full overflow-hidden rounded-lg aspect-video bg-muted border">
+            <div className="px-5 py-6 sm:px-8">
+              <div className="relative w-full overflow-hidden border border-foreground aspect-video bg-paper2">
                 {selectedImage && (
-                  <Image
-                    src={selectedImage}
-                    alt={`Vista previa de ${project.title}`}
-                    fill
-                    className="object-contain"
-                  />
-                )}
-                {galleryImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={() => handleImageNavigation('prev')}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 hover:bg-black/50 transition-all focus:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                      aria-label="Imagen anterior"
-                    >
-                      <ChevronLeft size={24} />
-                    </button>
-                    <button
-                      onClick={() => handleImageNavigation('next')}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 hover:bg-black/50 transition-all focus:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                      aria-label="Siguiente imagen"
-                    >
-                      <ChevronRight size={24} />
-                    </button>
-                  </>
+                  <Image src={selectedImage} alt={`${p.title} — ${index}/${galleryImages.length}`} fill sizes="(min-width: 1024px) 960px, 100vw" className="object-contain" />
                 )}
               </div>
               {galleryImages.length > 1 && (
-                <div className="flex gap-2 pb-2 -mx-6 sm:-mx-8 px-6 sm:px-8 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                  {galleryImages.map((imgUrl) => (
+                <div className="flex items-center justify-between gap-4 py-3 border-b border-border">
+                  <button onClick={() => handleImageNavigation('prev')} className="inline-flex items-center gap-1 label hover:underline" aria-label={t.prev}>
+                    <ChevronLeft size={16} aria-hidden /> {t.prev}
+                  </button>
+                  <span className="label num text-muted-foreground">{index} / {galleryImages.length}</span>
+                  <button onClick={() => handleImageNavigation('next')} className="inline-flex items-center gap-1 label hover:underline" aria-label={t.next}>
+                    {t.next} <ChevronRight size={16} aria-hidden />
+                  </button>
+                </div>
+              )}
+              {galleryImages.length > 1 && (
+                <div className="flex gap-2 py-3 overflow-x-auto">
+                  {galleryImages.map((imgUrl, i) => (
                     <button
                       key={imgUrl}
                       onClick={() => setSelectedImage(imgUrl)}
-                      className={`relative w-20 h-14 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all duration-200 ${selectedImage === imgUrl ? 'border-primary scale-105' : 'border-transparent hover:border-primary/50'
-                        }`}
+                      aria-label={`${i + 1} / ${galleryImages.length}`}
+                      aria-current={selectedImage === imgUrl}
+                      className={`relative w-20 h-14 shrink-0 overflow-hidden border-2 ${selectedImage === imgUrl ? 'border-foreground' : 'border-transparent opacity-60 hover:opacity-100'}`}
                     >
-                      <Image src={imgUrl} alt={`Miniatura de ${project.title}`} fill className="object-cover" />
+                      <Image src={imgUrl} alt="" fill sizes="80px" className="object-cover object-top" />
                     </button>
                   ))}
                 </div>
               )}
-            </div>
 
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-semibold mb-3 border-b border-border pb-2">Descripción</h3>
-                <p className="text-muted-foreground whitespace-pre-line leading-relaxed text-sm sm:text-base pt-3">
-                  {
-                    project.fullDescription.split('\\n').map((line, index) => {
-                      if (line.trim().endsWith(':')) {
-                        return (
-                          <h4 key={index} className="font-bold text-foreground mt-4 mb-2">
-                            {line}
-                          </h4>
-                        );
-                      }
-
-                      return (
-                        <p key={index} className="mb-1 ml-2">
-                          {line}
-                        </p>
-                      );
-                    })
-                  }
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Tecnologías</h3>
-                <ProjectTechnologies technologies={project.technologies} />
-              </div>
-
-              <div className="flex flex-wrap gap-4 pt-4 border-t border-border">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 transition-colors"
-                  >
-                    <ArrowUpRight size={16} />
-                    <span>Visitar Sitio</span>
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground bg-secondary rounded-md hover:bg-secondary/80 transition-colors"
-                  >
-                    <Github size={16} />
-                    <span>Ver Código</span>
-                  </a>
-                )}
+              <div className="grid gap-8 mt-6 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+                <div>
+                  <h3 className="pb-2 mb-3 border-b-2 border-foreground label">{t.description}</h3>
+                  <div className="max-w-[68ch] leading-relaxed">
+                    {p.fullDescription.split(/\\n|\n/).map((line, i) =>
+                      !line.trim() ? <div key={i} className="h-3" /> :
+                      line.trim().endsWith(':') ? <h4 key={i} className="mt-4 mb-1 font-sans font-bold">{line}</h4> :
+                      <p key={i} className="mb-1">{line}</p>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="pb-2 mb-3 border-b-2 border-foreground label">{t.technologies}</h3>
+                  <ul className="font-sans text-sm">
+                    {p.technologies.map((tech) => <li key={tech} className="py-1.5 border-b border-border">{tech}</li>)}
+                  </ul>
+                  <div className="flex flex-col gap-2 mt-6">
+                    {repoLinks(p, t).map((l) => (
+                      <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="btn-line">
+                        <Github size={16} aria-hidden /> {l.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

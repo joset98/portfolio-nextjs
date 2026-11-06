@@ -14,6 +14,7 @@ export type Experience = {
   role: string;
   company: string;
   duration: string;
+  highlight: { value: string; dir: "up" | "down"; label: string };
   description: string[];
   technologies: string[];
 };
