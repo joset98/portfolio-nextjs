@@ -1,18 +1,41 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowUpRight, Copy, Check, Linkedin, Mail } from "lucide-react"
 import { CONTACT, useLang } from "@/app/i18n"
 
+// Counts a figure like "−30%" up from 0 once on mount; the server HTML already holds the final value.
+function useCountIn(text: string, enabled: boolean) {
+  const [shown, setShown] = useState(text)
+  useEffect(() => {
+    const m = text.match(/\d+(?:[.,]\d+)?/)
+    if (!enabled || !m || matchMedia("(prefers-reduced-motion: reduce)").matches) return setShown(text)
+    const target = parseInt(m[0].replace(/[.,]/g, ""), 10) // figures are integers; . and , are thousands separators
+    const start = performance.now()
+    let raf = 0
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / 900, 1)
+      const n = Math.round(target * (1 - (1 - p) ** 3))
+      setShown(text.replace(m[0], String(p < 1 ? n : m[0])))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [text, enabled])
+  return shown
+}
+
 // All our deltas are improvements, so color follows "good", the arrow follows the sign.
-export function Delta({ value, dir, good = true, className = "" }: { value: string; dir: "up" | "down"; good?: boolean; className?: string }) {
+export function Delta({ value, dir, good = true, countIn = false, className = "" }: { value: string; dir: "up" | "down"; good?: boolean; countIn?: boolean; className?: string }) {
   const { t } = useLang()
+  const final = value.replace(/^[+−-]/, "")
+  const shown = useCountIn(final, countIn)
   return (
     <span className={`num font-sans font-bold whitespace-nowrap ${good ? "text-gain" : "text-loss"} ${className}`}>
       <span aria-hidden>{dir === "up" ? "▲" : "▼"} </span>
-      <span className="sr-only">{dir === "up" ? t.up : t.down} </span>
-      {value.replace(/^[+−-]/, "")}
+      <span className="sr-only">{dir === "up" ? t.up : t.down} {final}</span>
+      <span aria-hidden>{shown}</span>
     </span>
   )
 }
@@ -85,7 +108,7 @@ export function HeroSection() {
                 {indicators.map((r) => (
                   <tr key={r.name} className="border-b border-border">
                     <td className="py-2 pr-2">{r.name}</td>
-                    <td className="py-2 pr-2 text-right"><Delta value={r.value} dir={r.dir} /></td>
+                    <td className="py-2 pr-2 text-right"><Delta value={r.value} dir={r.dir} countIn /></td>
                     <td className="py-2 text-xs text-right text-muted-foreground">{r.src}</td>
                   </tr>
                 ))}

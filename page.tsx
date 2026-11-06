@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense } from "react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
 import { Project } from "./app/types"
 import { Footer } from "./app/components/Footer"
@@ -14,25 +14,21 @@ import { AboutSection } from "./app/components/About"
 import { ContactSection } from "./app/components/Contact"
 import { ExperienceSection } from "./app/components/experience/ExperienceHistory"
 
+// Only the modal reads ?project=, so only it bails out of static rendering; the rest of the page ships as HTML.
+function ProjectRoute() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const projectId = useSearchParams().get('project');
+  const project = projectId ? projectData.find(p => p.id === projectId) ?? null : null;
+  return <ProjectModal project={project} onClose={() => router.push(pathname, { scroll: false })} />
+}
+
 export default function Portfolio() {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  useEffect(() => {
-    const projectId = searchParams.get('project');
-    setSelectedProject(projectId ? projectData.find(p => p.id === projectId) ?? null : null);
-  }, [searchParams]);
 
   const handleProjectClick = (project: Project) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('project', project.id);
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
-  };
-
-  const handleCloseModal = () => {
-    router.push(pathname, { scroll: false });
+    router.push(`${pathname}?project=${encodeURIComponent(project.id)}`, { scroll: false });
   };
 
   return (
@@ -47,7 +43,9 @@ export default function Portfolio() {
         <ContactSection />
       </main>
       <Footer />
-      <ProjectModal project={selectedProject} onClose={handleCloseModal} />
+      <Suspense fallback={null}>
+        <ProjectRoute />
+      </Suspense>
     </div>
   )
 }
