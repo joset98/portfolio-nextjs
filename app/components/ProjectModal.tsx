@@ -54,7 +54,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       {p && (
         <div
           onClick={onClose}
-          className="animate-in fade-in duration-200 fixed inset-0 z-50 flex items-center justify-center p-2 bg-foreground/80 sm:p-6"
+          className="animate-in fade-in duration-200 fixed inset-0 z-50 flex items-center justify-center p-2 bg-black/70 sm:p-6"
         >
           <div
             role="dialog"
@@ -79,11 +79,11 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               {galleryImages.length > 1 && (
                 <div className="flex items-center justify-between gap-4 py-3 border-b border-border">
                   <button onClick={() => handleImageNavigation('prev')} className="inline-flex items-center gap-1 label hover:underline" aria-label={t.prev}>
-                    <ChevronLeft size={16} aria-hidden /> {t.prev}
+                    <ChevronLeft size={16} aria-hidden /> <span className="hidden sm:inline">{t.prev}</span>
                   </button>
                   <span className="label num text-muted-foreground">{index} / {galleryImages.length}</span>
                   <button onClick={() => handleImageNavigation('next')} className="inline-flex items-center gap-1 label hover:underline" aria-label={t.next}>
-                    {t.next} <ChevronRight size={16} aria-hidden />
+                    <span className="hidden sm:inline">{t.next}</span> <ChevronRight size={16} aria-hidden />
                   </button>
                 </div>
               )}
