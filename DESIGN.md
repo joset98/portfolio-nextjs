@@ -1,31 +1,31 @@
-# Design: Página de Mercados
+# Design: Impact sheet
 
-The portfolio is printed as the markets page of a business daily. Every achievement is a quoted figure with its ▲▼ change. Brief: `.impeccable/surfaces/page-tsx.md`.
+A sober portfolio built around measured impact. The first screen shows a plain headline with a real figure, an impact table with sources, and the contact box. It grew out of the "Página de Mercados" concept (`.impeccable/surfaces/page-tsx.md`) and keeps its structure without the newspaper styling. The previous classic design is tagged `v1-clasico`.
 
 ## Tokens (`app/globals.css`)
 
-| Token | Day | Night | Use |
+| Token | Light | Dark | Use |
 |---|---|---|---|
-| `--background` | newsprint `39 41% 93%` | `30 6% 7%` | page ground |
-| `--foreground` | ink `0 0% 8%` | `40 31% 89%` | text, rules |
-| `--paper-2` | `40 32% 88%` | `30 5% 11%` | ticker, table stripes |
-| `--muted-foreground` | `37 9% 32%` | `38 10% 66%` | datelines, captions |
-| `--border` | `37 12% 74%` | `30 5% 26%` | hairline column rules |
+| `--background` | `0 0% 99%` | `222 22% 7%` | page ground |
+| `--foreground` | ink `222 40% 10%` | `210 20% 94%` | text, rules |
+| `--paper-2` | `220 16% 95%` | `222 16% 11%` | image wells, stripes |
+| `--muted-foreground` | `220 9% 38%` | `218 11% 66%` | captions, labels |
+| `--border` | `220 13% 86%` | `220 10% 22%` | hairline rules |
 | `--gain` / `--loss` | green / red | lighter pair | **deltas only**, always next to ▲▼ |
 
-Day edition is the default (`defaultTheme="light"`); night is opt-in from the masthead.
+Light is the default; dark is opt-in from the header.
 
 ## Type (`app/layout.tsx`)
 
-- **Bodoni Moda** (`font-display`): headlines only.
-- **Libre Franklin** (`font-sans`): figures, tables, controls, datelines. Use tabular numbers for figures.
-- **Source Serif 4** (`font-serif`): body copy.
+- **Inter Tight** (`font-display`): headlines, tight tracking, 700 to 800.
+- **Inter** (`font-sans`, and `font-serif` maps to it too): body, tables, controls. Use tabular numbers for figures (`.num`).
 
 ## Rules
 
 - Square corners, no shadows, no gradients. A rule (border) does the work of elevation.
 - One ink color. Green and red appear only on deltas.
-- Motion: indicator figures count up once on load, ledger rows expand (`<details>`), project images zoom slightly on hover, and the modal fades in. Nothing else moves, and `prefers-reduced-motion` turns all of it off.
+- Plain labels: Experience, Projects, Stack, Measured impact. No metaphors a recruiter has to decode.
+- Motion: indicator figures count up once on load, experience rows expand (`<details>`), project images zoom slightly on hover, and the modal fades in. `prefers-reduced-motion` turns all of it off.
 - Contact (email, copy, LinkedIn, CV) shows in the first viewport and again at the end. Never put a fake form here.
 - All copy comes from `app/i18n.tsx` (ES/EN) and `app/data/*.json`. Every figure must trace back to `experience.json`.
 
@@ -33,4 +33,4 @@ Day edition is the default (`defaultTheme="light"`); night is opt-in from the ma
 
 - `public/assets/user-profile.jpg`: the owner's photo.
 - `public/assets/projects/**`: real screenshots of the owner's projects.
-- `app/icon.svg`: a hand-written "JT" monogram on newsprint.
+- `app/icon.svg`: a hand-written "JT" monogram.

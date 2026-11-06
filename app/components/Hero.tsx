@@ -86,10 +86,10 @@ export function HeroSection() {
               width={112}
               height={140}
               priority
-              className="object-cover w-16 h-20 sm:w-28 sm:h-36 grayscale contrast-125"
+              className="object-cover w-16 h-20 sm:w-28 sm:h-36"
             />
             <div>
-              <p className="max-w-[60ch] text-lg leading-relaxed sm:text-xl first-letter:font-display first-letter:text-[3.4em] first-letter:leading-[0.8] first-letter:float-left first-letter:mr-2 first-letter:font-bold">
+              <p className="max-w-[60ch] text-lg leading-relaxed sm:text-xl">
                 {t.lede}
               </p>
               <p className="mt-4 label text-muted-foreground">{t.byline}</p>

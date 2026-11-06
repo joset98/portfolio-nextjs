@@ -18,9 +18,9 @@ module.exports = {
         loss: "hsl(var(--loss))",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        serif: ["var(--font-sans)", "system-ui", "sans-serif"],
       },
       maxWidth: { page: "80rem" },
     },

@@ -4,22 +4,22 @@
 
 @layer base {
   :root {
-    /* Day edition: newsprint + one ink */
-    --background: 39 41% 93%;
-    --foreground: 0 0% 8%;
-    --paper-2: 40 32% 88%;
-    --muted-foreground: 37 9% 32%;
-    --border: 37 12% 74%;
+    /* Light: neutral paper + one ink */
+    --background: 0 0% 99%;
+    --foreground: 222 40% 10%;
+    --paper-2: 220 16% 95%;
+    --muted-foreground: 220 9% 38%;
+    --border: 220 13% 86%;
     --gain: 154 81% 23%;
     --loss: 2 62% 43%;
   }
   .dark {
-    /* Night edition */
-    --background: 30 6% 7%;
-    --foreground: 40 31% 89%;
-    --paper-2: 30 5% 11%;
-    --muted-foreground: 38 10% 66%;
-    --border: 30 5% 26%;
+    /* Dark */
+    --background: 222 22% 7%;
+    --foreground: 210 20% 94%;
+    --paper-2: 222 16% 11%;
+    --muted-foreground: 218 11% 66%;
+    --border: 220 10% 22%;
     --gain: 150 55% 55%;
     --loss: 4 75% 65%;
   }
@@ -58,12 +58,12 @@
   .num {
     font-variant-numeric: tabular-nums lining-nums;
   }
-  /* Small-caps data label, Franklin */
+  /* Small uppercase data label */
   .label {
     @apply font-sans text-[0.7rem] font-semibold uppercase tracking-[0.12em];
   }
   .rule-double {
-    border-top: 3px double hsl(var(--foreground));
+    border-top: 2px solid hsl(var(--foreground));
   }
   .btn-ink {
     @apply inline-flex items-center justify-center gap-2 px-5 py-3 font-sans text-sm font-semibold bg-foreground text-background transition-opacity hover:opacity-85 disabled:opacity-50;
