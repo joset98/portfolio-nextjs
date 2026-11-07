@@ -61,8 +61,7 @@ export function CopyEmail({ className = "" }: { className?: string }) {
 }
 
 export function HeroSection() {
-  const { t, indicators, skills } = useLang()
-  const mailto = `mailto:${CONTACT.email}?subject=${encodeURIComponent(t.emailSubject)}`
+  const { t, indicators, skills, mailto } = useLang()
   const ticker = [...(skills.Frontend ?? []).slice(0, 3), ...(skills.Backend ?? []).slice(0, 2), "PostgreSQL", "Flutter", "Jest", "Cypress"]
 
   return (
