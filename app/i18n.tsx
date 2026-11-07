@@ -175,13 +175,15 @@ function localize(lang: Lang) {
 type Ctx = { lang: Lang; setLang: (l: Lang) => void }
 const LangCtx = createContext<Ctx>({ lang: "es", setLang: () => {} })
 
-// The server picks the first language (cookie, then Accept-Language); a manual switch is saved in the cookie.
+// The server renders the language of the URL (middleware.ts); a manual switch is saved in the cookie.
 export function LangProvider({ initialLang, children }: { initialLang: Lang; children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>(initialLang)
 
   const setLang = (l: Lang) => {
     setLangState(l)
     document.cookie = `lang=${l}; path=/; max-age=31536000; samesite=lax`
+    // Keep the URL on the matching page ("/" English, "/es" Spanish) without refetching.
+    window.history.replaceState(null, "", (l === "es" ? "/es" : "/") + window.location.search)
   }
 
   useEffect(() => {
@@ -196,5 +198,6 @@ export function LangProvider({ initialLang, children }: { initialLang: Lang; chi
 export function useLang() {
   const { lang, setLang } = useContext(LangCtx)
   const data = useMemo(() => localize(lang), [lang])
-  return { lang, setLang, t: dict[lang], indicators: indicators[lang], ...data }
+  const mailto = `mailto:${CONTACT.email}?subject=${encodeURIComponent(dict[lang].emailSubject)}`
+  return { lang, setLang, t: dict[lang], indicators: indicators[lang], mailto, ...data }
 }

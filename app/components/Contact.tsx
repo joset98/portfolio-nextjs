@@ -5,8 +5,7 @@ import { CONTACT, useLang } from "@/app/i18n"
 import { CopyEmail } from "./Hero"
 
 export function ContactSection() {
-  const { t } = useLang()
-  const mailto = `mailto:${CONTACT.email}?subject=${encodeURIComponent(t.emailSubject)}`
+  const { t, mailto } = useLang()
 
   return (
     <section id="contact" className="px-4 mx-auto max-w-page sm:px-6">

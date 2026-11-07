@@ -44,6 +44,14 @@ test("server picks the language from the browser and sends matching title, descr
   expect(await (await request.get("/", { headers: { "accept-language": "" } })).text()).toContain('<html lang="en"')
   const saved = await (await request.get("/", { headers: { "accept-language": "en-US", cookie: "lang=es" } })).text()
   expect(saved).toContain('<html lang="es"')
+
+  // Each language has its own URL and points to the other, so crawlers index both.
+  const esPage = await request.get("/es", { headers: { "accept-language": "" } })
+  const esHtml = await esPage.text()
+  expect(esHtml).toContain('<html lang="es"')
+  expect(esHtml).toMatch(/<link rel="canonical" href="[^"]*\/es"/)
+  expect(esHtml).toMatch(/<link rel="alternate" hrefLang="en" href="https?:\/\/[^"/]+\/?"/)
+  expect((await request.get("/", { headers: { "accept-language": "es" }, maxRedirects: 0 })).headers()["location"]).toMatch(/\/es$/)
 })
 
 test("language switch updates copy, title, description and is remembered", async ({ browser }) => {
@@ -55,6 +63,8 @@ test("language switch updates copy, title, description and is remembered", async
   await expect(page.locator("html")).toHaveAttribute("lang", "en")
   await expect(page.getByRole("heading", { level: 2 }).first()).toContainText("I build")
   await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /with 6\+ years/)
+
+  await expect(page).toHaveURL(/:\d+\/$/)
 
   await page.reload()
   await expect(page.locator("html")).toHaveAttribute("lang", "en")
