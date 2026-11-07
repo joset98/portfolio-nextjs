@@ -1,5 +1,50 @@
 [
   {
+    "id": "octo-condo",
+    "title": "Octo-Condo: Sistema Full-Stack para la Gestión de Condominios",
+    "description": "Octo-Condo es una solución de software completa, diseñada bajo una arquitectura cliente-servidor, para automatizar y simplificar la administración de condominios. El sistema se compone de dos proyectos principales: un backend robusto (octo-condo-api-engine) y una interfaz de usuario intuitiva (octo-condo-manager).",
+    "fullDescription": "Backend (octo-condo-api-engine):\n\nDesarrollado con NestJS (Node.js/TypeScript), este motor es el cerebro de la aplicación. Sus responsabilidades clave incluyen:\n\nLógica de Negocio Centralizada: Automatiza el cálculo de las cuotas mensuales, prorrateando los gastos comunes entre las unidades según su alícuota y asignando gastos privados.\nAPI REST Segura: Expone endpoints para todas las operaciones, protegidos con autenticación basada en JWT y un sistema de roles (ADMIN, OWNER) que garantiza que los usuarios solo accedan a la información y acciones permitidas.\nGeneración Dinámica de PDF: Una de las características más destacadas es la capacidad de generar recibos de pago y reportes detallados en formato PDF. Utiliza Puppeteer para convertir plantillas HTML dinámicas, asegurando documentos profesionales y precisos.\nIntegración con Servicios Externos: Se conecta a APIs de terceros para obtener la tasa de cambio de moneda en tiempo real (ej. BCV), permitiendo presentar los montos en múltiples divisas (USD y Bs.) en los recibos, una funcionalidad crucial para el contexto venezolano.\n\nFrontend (octo-condo-manager):\n\nEs la aplicación web con la que interactúan los usuarios. Aunque es un proyecto separado, está diseñado para consumir la API del backend y ofrecer una experiencia de usuario fluida para dos perfiles principales:\n\nPanel de Administración: Permite a los administradores registrar gastos, generar las cuotas de todo el condominio con un solo clic, validar pagos y gestionar la información de los residentes.\nPortal del Propietario: Ofrece a los residentes un acceso seguro para consultar su estado de cuenta, ver el desglose de sus cuotas y descargar sus recibos de pago en PDF en cualquier momento.\n\nEn conjunto, Octo-Condo demuestra la capacidad de construir una aplicación full-stack escalable y orientada a resolver un problema del mundo real, integrando lógica de negocio compleja, seguridad, y manipulación avanzada de documentos.",
+    "technologies": [
+      "NestJS",
+      "Node.js",
+      "TypeScript",
+      "Puppeteer",
+      "JWT",
+      "Next.js",
+      "React",
+      "Tailwind CSS"
+    ],
+    "githubUrl": "https://github.com/joset98/octo-condo-api-engine",
+    "liveUrl": "https://github.com/joset98/octo-condo-manager",
+    "imageUrl": "/assets/projects/condo/condo_dashboard_condo.PNG",
+    "galleryImages": [
+      "/assets/projects/condo/condo_dashboard_condo.PNG",
+      "/assets/projects/condo/condo_add_condo.PNG",
+      "/assets/projects/condo/condo_common_areas.PNG",
+      "/assets/projects/condo/condo_dashboard.PNG",
+      "/assets/projects/condo/condo_expenses.PNG",
+      "/assets/projects/condo/condo_generate_quotes_form.PNG",
+      "/assets/projects/condo/condo_generate_quotes.PNG",
+      "/assets/projects/condo/condo_login.PNG",
+      "/assets/projects/condo/condo_quote_details.PNG",
+      "/assets/projects/condo/condo_register_expenses.PNG"
+    ],
+    "metrics": [
+      {
+        "value": "58",
+        "label": "endpoints REST"
+      },
+      {
+        "value": "119",
+        "label": "tests unitarios"
+      },
+      {
+        "value": "2",
+        "label": "monedas por recibo"
+      }
+    ]
+  },
+  {
     "id": "choppi",
     "title": "Choppi | Marketplace E-commerce Full-Stack",
     "description": "Plataforma de e-commerce tipo marketplace diseñada de principio a fin, con una API RESTful en NestJS y una aplicación web en Next.js, simulando un entorno de mercado real con múltiples tiendas.",
@@ -18,7 +63,7 @@
     ],
     "githubUrl": "https://github.com/joset98/choppi-api-engine",
     "liveUrl": "https://github.com/joset98/choppi-web-app",
-    "imageUrl": "/assets/projects/choppi/choppi_login.PNG",
+    "imageUrl": "/assets/projects/choppi/choppi_landing.PNG",
     "galleryImages": [
       "/assets/projects/choppi/choppi_admin_create_product.PNG",
       "/assets/projects/choppi/choppi_admin_products.PNG",
@@ -28,6 +73,20 @@
       "/assets/projects/choppi/choppi_purchase_cart.PNG",
       "/assets/projects/choppi/choppi_shops.PNG",
       "/assets/projects/choppi/choppi_store_products.PNG"
+    ],
+    "metrics": [
+      {
+        "value": "2",
+        "label": "apps: API + web"
+      },
+      {
+        "value": "2",
+        "label": "roles con RBAC"
+      },
+      {
+        "value": "HttpOnly",
+        "label": "JWT en cookie"
+      }
     ]
   },
   {
@@ -45,7 +104,7 @@
     ],
     "githubUrl": "https://github.com/joset98/workspot",
     "liveUrl": "https://github.com/joset98/workspot",
-    "imageUrl": "/assets/projects/workspot/workspot_login.PNG",
+    "imageUrl": "/assets/projects/workspot/workspot_project_list_2.PNG",
     "galleryImages": [
       "/assets/projects/workspot/workspot_chat.PNG",
       "/assets/projects/workspot/workspot_consult_1.PNG",
@@ -82,6 +141,20 @@
       "/assets/projects/workspot/workspot_user_profile_3.PNG",
       "/assets/projects/workspot/workspot_user_profile_4.PNG",
       "/assets/projects/workspot/workspot_user_profile_5.PNG"
+    ],
+    "metrics": [
+      {
+        "value": "3",
+        "label": "roles con su dashboard"
+      },
+      {
+        "value": "10",
+        "label": "pasos en el wizard"
+      },
+      {
+        "value": "35",
+        "label": "pantallas"
+      }
     ]
   },
   {
@@ -106,37 +179,20 @@
       "/assets/projects/academic/academic_manager.PNG",
       "/assets/projects/academic/academic_login.PNG",
       "/assets/projects/academic/academic_courses.PNG"
-    ]
-  },
-  {
-    "id": "octo-condo",
-    "title": "Octo-Condo: Sistema Full-Stack para la Gestión de Condominios",
-    "description": "Octo-Condo es una solución de software completa, diseñada bajo una arquitectura cliente-servidor, para automatizar y simplificar la administración de condominios. El sistema se compone de dos proyectos principales: un backend robusto (octo-condo-api-engine) y una interfaz de usuario intuitiva (octo-condo-manager).",
-    "fullDescription": "Backend (octo-condo-api-engine):\n\nDesarrollado con NestJS (Node.js/TypeScript), este motor es el cerebro de la aplicación. Sus responsabilidades clave incluyen:\n\nLógica de Negocio Centralizada: Automatiza el cálculo de las cuotas mensuales, prorrateando los gastos comunes entre las unidades según su alícuota y asignando gastos privados.\nAPI REST Segura: Expone endpoints para todas las operaciones, protegidos con autenticación basada en JWT y un sistema de roles (ADMIN, OWNER) que garantiza que los usuarios solo accedan a la información y acciones permitidas.\nGeneración Dinámica de PDF: Una de las características más destacadas es la capacidad de generar recibos de pago y reportes detallados en formato PDF. Utiliza Puppeteer para convertir plantillas HTML dinámicas, asegurando documentos profesionales y precisos.\nIntegración con Servicios Externos: Se conecta a APIs de terceros para obtener la tasa de cambio de moneda en tiempo real (ej. BCV), permitiendo presentar los montos en múltiples divisas (USD y Bs.) en los recibos, una funcionalidad crucial para el contexto venezolano.\n\nFrontend (octo-condo-manager):\n\nEs la aplicación web con la que interactúan los usuarios. Aunque es un proyecto separado, está diseñado para consumir la API del backend y ofrecer una experiencia de usuario fluida para dos perfiles principales:\n\nPanel de Administración: Permite a los administradores registrar gastos, generar las cuotas de todo el condominio con un solo clic, validar pagos y gestionar la información de los residentes.\nPortal del Propietario: Ofrece a los residentes un acceso seguro para consultar su estado de cuenta, ver el desglose de sus cuotas y descargar sus recibos de pago en PDF en cualquier momento.\n\nEn conjunto, Octo-Condo demuestra la capacidad de construir una aplicación full-stack escalable y orientada a resolver un problema del mundo real, integrando lógica de negocio compleja, seguridad, y manipulación avanzada de documentos.",
-    "technologies": [
-      "NestJS",
-      "Node.js",
-      "TypeScript",
-      "Puppeteer",
-      "JWT",
-      "Next.js",
-      "React",
-      "Tailwind CSS"
     ],
-    "githubUrl": "https://github.com/joset98/octo-condo-api-engine",
-    "liveUrl": "https://github.com/joset98/octo-condo-manager",
-    "imageUrl": "/assets/projects/condo/condo_dashboard_condo.PNG",
-    "galleryImages": [
-      "/assets/projects/condo/condo_dashboard_condo.PNG",
-      "/assets/projects/condo/condo_add_condo.PNG",
-      "/assets/projects/condo/condo_common_areas.PNG",
-      "/assets/projects/condo/condo_dashboard.PNG",
-      "/assets/projects/condo/condo_expenses.PNG",
-      "/assets/projects/condo/condo_generate_quotes_form.PNG",
-      "/assets/projects/condo/condo_generate_quotes.PNG",
-      "/assets/projects/condo/condo_login.PNG",
-      "/assets/projects/condo/condo_quote_details.PNG",
-      "/assets/projects/condo/condo_register_expenses.PNG"
+    "metrics": [
+      {
+        "value": "10",
+        "label": "entidades CRUD"
+      },
+      {
+        "value": "4",
+        "label": "roles"
+      },
+      {
+        "value": "0",
+        "label": "servidores"
+      }
     ]
   },
   {
@@ -166,6 +222,20 @@
       "/assets/projects/medic/mobile_prescribed_treatments.PNG",
       "/assets/projects/medic/patient_history.PNG",
       "/assets/projects/medic/patients_list.PNG"
+    ],
+    "metrics": [
+      {
+        "value": "3",
+        "label": "clientes, 1 API"
+      },
+      {
+        "value": "1 toque",
+        "label": "botón de pánico"
+      },
+      {
+        "value": "iOS + Android",
+        "label": "app Flutter"
+      }
     ]
   }
 ]

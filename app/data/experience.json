@@ -3,6 +3,7 @@
     "role": "Software Engineer",
     "company": "Azordev",
     "duration": "Agosto, 2022 - presente (3 años)",
+    "highlight": { "value": "−25%", "dir": "down", "label": "tamaño del bundle" },
     "description": [
       "Arquitectura de estado global eficiente utilizando Context API y Hooks personalizados, reduciendo renders innecesarios.",
       "Implementación de suites de pruebas unitarias e integración con Jest, aumentando la fiabilidad del sistema en un 15%",
@@ -29,6 +30,7 @@
     "role": "Fullstack Developer",
     "company": "Gamifica",
     "duration": "Agosto, 2021 - Mayo, 2022 (10 meses)",
+    "highlight": { "value": "−30%", "dir": "down", "label": "tiempo de carga" },
     "description": [
       "Lideré la creación de un módulo social dinámico con React.js que permitió a más de 2,000 usuarios interactuar mediante logros, comentarios y reacciones, fomentando el compromiso dentro de la plataforma.",
       "Reducción del 30% en tiempos de carga mediante la optimización del renderizado en cliente y refactorización de lógica en el backend (Spring Java).",
@@ -47,6 +49,7 @@
     "role": "Fullstack Developer",
     "company": "Publipagos.net",
     "duration": "Julio, 2020 - Junio, 2021 (1 año)",
+    "highlight": { "value": "−20%", "dir": "down", "label": "tiempo de revisión" },
     "description": [
       "Modernización de la plataforma legacy hacia Next.js, implementando estrategias de SSR y SSG para optimizar la carga y el SEO.",
       "Diseño de una biblioteca de componentes reactivos para mejorar la mantenibilidad y fluidez de la interfaz.",

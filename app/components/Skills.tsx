@@ -1,53 +1,27 @@
-import { Skills as SkillsType } from "@/app/types"
-import { skillIcons } from "@/components/ui/iconsMap";
-import { Code } from "lucide-react";
+"use client"
 
-interface SkillsProps {
-  skills: SkillsType | null;
-}
+import { useLang } from "@/app/i18n"
+import { SectionHead } from "./experience/ExperienceHistory"
 
-// Sub-componente para un solo skill, mejora la legibilidad y el mantenimiento.
-function SkillItem({ name }: { name: string }) {
+export function SkillsSection() {
+  const { t, skills } = useLang()
+
   return (
-    <li className="flex items-center gap-3">
-      <span className="text-primary text-xl w-5 flex-shrink-0 flex items-center justify-center">
-        {skillIcons[name as keyof typeof skillIcons] || <Code size={18} />}
-      </span>
-      <span className="text-muted-foreground">{name}</span>
-    </li>
-  );
-}
-
-// Sub-componente para una categoría de skills.
-function SkillCategory({ category, skills }: { category: string, skills: string[] }) {
-  return (
-    <div className="p-6 bg-card border border-border rounded-lg transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1">
-      <h3 className="text-xl font-bold mb-4 text-primary">{category}</h3>
-      <ul className="space-y-3">
-        {skills.map((skill) => (
-          <SkillItem key={skill} name={skill} />
+    <section id="skills" className="px-4 py-16 mx-auto max-w-page sm:px-6">
+      <SectionHead title={t.stackTitle} />
+      <div className="grid border-t-2 border-foreground sm:grid-cols-2 lg:grid-cols-5">
+        {Object.entries(skills).map(([category, items]) => (
+          <div key={category} className="py-4 border-b border-border sm:pr-5 lg:border-b-0 lg:border-r lg:pl-5 lg:first:pl-0 lg:last:border-r-0">
+            <h3 className="pb-2 mb-2 border-b border-foreground label">
+              {category} <span className="text-muted-foreground num">({items.length})</span>
+            </h3>
+            <ul className="font-sans text-sm">
+              {items.map((s) => (
+                <li key={s} className="py-1.5 border-b border-dotted border-border last:border-0">{s}</li>
+              ))}
+            </ul>
+          </div>
         ))}
-      </ul>
-    </div>
-  );
-}
-
-export function SkillsSection({ skills }: SkillsProps) {
-  if (!skills) {
-    return null;
-  }
-
-  return (
-    <section id="skills" className="relative z-10 py-16 bg-background">
-      <div className="container px-4 mx-auto">
-        <h2 className="mb-12 text-4xl font-bold text-center md:text-5xl">
-          Habilidades y Herramientas
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(skills).map(([category, skillList]) => (
-            <SkillCategory key={category} category={category} skills={skillList} />
-          ))}
-        </div>
       </div>
     </section>
   )
