@@ -1,6 +1,6 @@
 {
-  "experience": [
-    {
+  "experience": {
+    "Azordev": {
       "duration": "August 2022 – present (3 years)",
       "description": [
         "Designed an efficient global state architecture with Context API and custom hooks, cutting unnecessary renders.",
@@ -11,7 +11,7 @@
       ],
       "highlight": "bundle size"
     },
-    {
+    "Gamifica": {
       "duration": "August 2021 – May 2022 (10 months)",
       "description": [
         "Led a dynamic social module in React.js that let 2,000+ users interact through achievements, comments and reactions, driving engagement on the platform.",
@@ -20,7 +20,7 @@
       ],
       "highlight": "load time"
     },
-    {
+    "Publipagos.net": {
       "duration": "July 2020 – June 2021 (1 year)",
       "description": [
         "Modernized the legacy platform to Next.js, applying SSR and SSG strategies to improve loading and SEO.",
@@ -29,7 +29,7 @@
       ],
       "highlight": "review time"
     }
-  ],
+  },
   "projects": {
     "choppi": {
       "title": "Choppi | Full-Stack Marketplace E-commerce",

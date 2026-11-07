@@ -161,8 +161,8 @@ function localize(lang: Lang) {
   if (lang === "es") return { experience, projects, skills }
   const items = en.skillItems as Record<string, string>
   return {
-    experience: experience.map((e, i) => {
-      const o = en.experience[i]
+    experience: experience.map((e) => {
+      const o = (en.experience as Record<string, typeof en.experience.Azordev | undefined>)[e.company]
       return o ? { ...e, duration: o.duration, description: o.description, highlight: { ...e.highlight, label: o.highlight } } : e
     }),
     projects: projects.map((p) => ({ ...p, ...(en.projects as Record<string, Partial<Project>>)[p.id] })),
