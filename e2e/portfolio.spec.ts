@@ -12,12 +12,17 @@ test("impact figures count up to their final values", async ({ page }) => {
   await expect(page.locator("aside table tbody tr").first()).toContainText("30%")
 })
 
-test("project modal opens on click, closes with Escape, and opens from a deep link", async ({ page }) => {
+test("project modal opens on click, closes with Escape without a Back trap, and opens from a deep link", async ({ page }) => {
   await page.goto("/")
   await page.locator("#projects button").first().click()
   await expect(page).toHaveURL(/\?project=/)
   await expect(page.getByRole("dialog")).toBeVisible()
   await page.keyboard.press("Escape")
+  await expect(page.getByRole("dialog")).toBeHidden()
+  await expect(page).not.toHaveURL(/\?project=/)
+  await expect(page.locator("#projects button").first()).toBeFocused()
+  // Closing replaces the history entry, so Back must not reopen the modal.
+  await page.goBack()
   await expect(page.getByRole("dialog")).toBeHidden()
 
   await page.goto("/?project=medisync")

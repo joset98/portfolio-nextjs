@@ -20,7 +20,7 @@ function ProjectRoute() {
   const pathname = usePathname();
   const projectId = useSearchParams().get('project');
   const project = projectId ? projectData.find(p => p.id === projectId) ?? null : null;
-  return <ProjectModal project={project} onClose={() => router.push(pathname, { scroll: false })} />
+  return <ProjectModal project={project} onClose={() => router.replace(pathname, { scroll: false })} />
 }
 
 export default function Portfolio() {

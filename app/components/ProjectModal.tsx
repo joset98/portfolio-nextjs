@@ -17,15 +17,16 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
   // Re-read from the localized list so the modal follows the language switch.
   const p = project ? projects.find((x) => x.id === project.id) ?? project : null;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const galleryImages = p ? Array.from(new Set([p.imageUrl, ...(p.galleryImages || [])])) : [];
 
+  // Native modal dialog: the browser keeps focus inside, closes on Escape and returns focus to the opener on close().
   useEffect(() => {
+    const d = dialogRef.current;
     if (p?.imageUrl) setSelectedImage(p.imageUrl);
-    if (p) closeRef.current?.focus();
-    document.body.style.overflow = p ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (p && !d?.open) d?.showModal();
+    else if (!p && d?.open) d.close();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [p?.id]);
 
@@ -41,31 +42,27 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
       if (!p) return;
       if (e.key === 'ArrowRight') handleImageNavigation('next');
       else if (e.key === 'ArrowLeft') handleImageNavigation('prev');
-      else if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [p, handleImageNavigation, onClose]);
+  }, [p, handleImageNavigation]);
 
   const index = selectedImage ? galleryImages.indexOf(selectedImage) + 1 : 1;
 
   return (
-    <>
+    <dialog
+      ref={dialogRef}
+      aria-labelledby="project-title"
+      // Escape closes the dialog natively; only sync the URL when it closed while a project was still open.
+      onClose={() => { if (p) onClose(); }}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      className="w-[calc(100%-1rem)] max-w-5xl max-h-[94vh] p-0 overflow-y-auto bg-background text-foreground border-2 border-foreground backdrop:bg-black/70 open:animate-in open:fade-in open:duration-200 sm:w-[calc(100%-3rem)]"
+    >
       {p && (
-        <div
-          onClick={onClose}
-          className="animate-in fade-in duration-200 fixed inset-0 z-50 flex items-center justify-center p-2 bg-black/70 sm:p-6"
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="project-title"
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl max-h-[94vh] overflow-y-auto bg-background border-2 border-foreground"
-          >
+          <div>
             <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-5 py-4 border-b border-foreground bg-background sm:px-8">
               <h2 id="project-title" className="font-display text-2xl font-bold leading-tight sm:text-3xl">{p.title}</h2>
-              <button ref={closeRef} onClick={onClose} className="p-2 -m-2 shrink-0 hover:opacity-70" aria-label={t.close}>
+              <button onClick={onClose} className="p-2 -m-2 shrink-0 hover:opacity-70" aria-label={t.close}>
                 <X size={24} />
               </button>
             </div>
@@ -130,8 +127,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
             </div>
           </div>
-        </div>
       )}
-    </>
+    </dialog>
   );
 }

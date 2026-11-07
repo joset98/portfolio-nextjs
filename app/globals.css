@@ -49,6 +49,9 @@
   html {
     scrollbar-color: hsl(var(--border)) hsl(var(--background));
   }
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
   h1, h2, h3 {
     text-wrap: balance;
   }
@@ -70,6 +73,39 @@
   }
   .btn-line {
     @apply inline-flex items-center justify-center gap-2 px-5 py-3 font-sans text-sm font-semibold border border-foreground transition-colors hover:bg-foreground hover:text-background;
+  }
+}
+
+/* Motion: short, small rises only. Content is never hidden without motion support. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: staggered entrance on load */
+  #top > p, #top article, #top aside > div {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  #top article { animation-delay: 80ms; }
+  #top aside > div:first-child { animation-delay: 200ms; }
+  #top aside > div:last-child { animation-delay: 320ms; }
+
+  /* Experience detail opens with a short rise */
+  details[open] > summary + div {
+    animation: rise 0.35s ease-out;
+  }
+
+  /* Other sections rise in as they scroll into view (Chromium, Safari 26+; elsewhere they are simply shown) */
+  @supports (animation-timeline: view()) {
+    main section:not(#top) > div:first-child,
+    #experience details,
+    #projects article,
+    #skills .grid > div,
+    #about-me .grid > *,
+    #contact > div {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
   }
 }
 
