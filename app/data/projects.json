@@ -1,5 +1,53 @@
 [
   {
+    "id": "specforge",
+    "title": "Specforge: Generador de Especificaciones con Agentes de IA",
+    "description": "Aplicación que convierte una idea de software o un documento de requerimientos (PDF/Word) en historias de usuario con Gherkin, un modelo de datos relacional, una API REST y casos de prueba. Un pipeline de agentes (Product Owner, Arquitecto y QA) trabaja en cadena y un validador determinista revisa que todo encaje antes de exportarlo a Jira, GitHub, OpenAPI o SQL.",
+    "fullDescription": "Orquestación de agentes hecha a mano:\n\nSin LangChain ni frameworks: un orquestador asíncrono en Python ejecuta Product Owner → Arquitecto → QA, y cada agente devuelve JSON validado con Pydantic (tool use forzado en Claude, JSON Schema en OpenAI). Si la salida no cumple el esquema, el agente reintenta una vez con el error en el prompt. Los proveedores viven detrás de una interfaz LLMProvider de un solo método, así que agregar uno nuevo es un archivo.\n\nValidador determinista con autocorrección:\n\n10 chequeos en código, no en un LLM: cada historia tiene un endpoint, cada endpoint tiene un test, cada clave foránea apunta a una columna real, no hay rutas ni ids duplicados. Cada problema indica qué agente lo causó y el orquestador vuelve a ejecutar solo ese agente y los que dependen de él, con un máximo de 2 rondas. El ciclo se ve en vivo en la interfaz mediante Server-Sent Events.\n\nPensado para equipos reales:\n\nCampo de contexto del equipo (stack, convenciones, restricciones) que respetan los tres agentes, refinamiento de cualquier sección con feedback en lenguaje natural, y exportación a CSV de Jira, issues de GitHub, OpenAPI 3.1, script DDL de PostgreSQL (ordenado por claves foráneas, con manejo de ciclos), Markdown con diagrama ER y JSON reimportable.\n\nDemo pública con costo controlado:\n\nEjecuciones gratis con límite por IP y tope global diario, o la key propia del visitante (Claude u OpenAI) que viaja solo en la petición y nunca se guarda; un filtro enmascara keys y tokens en los logs. El servidor no guarda estado: el resultado vive en el navegador y se valida de nuevo en cada refinamiento o exportación.\n\nCalidad:\n\n127 tests (pytest y Vitest) que no gastan tokens gracias a un FakeProvider, CI con GitHub Actions, revisión de código independiente con sus hallazgos corregidos, e interfaz en modo claro y oscuro, accesible por teclado y adaptada a móvil.",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "Pydantic",
+      "Claude API",
+      "OpenAI API",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Server-Sent Events",
+      "Mermaid",
+      "pytest",
+      "Vitest",
+      "GitHub Actions"
+    ],
+    "githubUrl": "https://github.com/joset98/specforge",
+    "liveUrl": "https://github.com/joset98/specforge",
+    "imageUrl": "/assets/projects/specforge/specforge_stories.png",
+    "galleryImages": [
+      "/assets/projects/specforge/specforge_stories.png",
+      "/assets/projects/specforge/specforge_home.png",
+      "/assets/projects/specforge/specforge_data_model.png",
+      "/assets/projects/specforge/specforge_api.png",
+      "/assets/projects/specforge/specforge_validation.png",
+      "/assets/projects/specforge/specforge_export.png",
+      "/assets/projects/specforge/specforge_dark.png",
+      "/assets/projects/specforge/specforge_mobile.png"
+    ],
+    "metrics": [
+      {
+        "value": "4",
+        "label": "agentes + validador"
+      },
+      {
+        "value": "10",
+        "label": "chequeos deterministas"
+      },
+      {
+        "value": "6",
+        "label": "formatos de exportación"
+      }
+    ]
+  },
+  {
     "id": "octo-condo",
     "title": "Octo-Condo: Sistema Full-Stack para la Gestión de Condominios",
     "description": "Octo-Condo es una solución de software completa, diseñada bajo una arquitectura cliente-servidor, para automatizar y simplificar la administración de condominios. El sistema se compone de dos proyectos principales: un backend robusto (octo-condo-api-engine) y una interfaz de usuario intuitiva (octo-condo-manager).",

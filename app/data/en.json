@@ -31,6 +31,25 @@
     }
   },
   "projects": {
+    "specforge": {
+      "title": "Specforge: AI-Agent Spec Generator",
+      "description": "An app that turns a software idea or a requirements document (PDF/Word) into user stories with Gherkin, a relational data model, a REST API and test cases. A pipeline of agents (Product Owner, Architect and QA) works in sequence and a deterministic validator checks that everything fits before exporting it to Jira, GitHub, OpenAPI or SQL.",
+      "fullDescription": "Hand-written agent orchestration:\n\nNo LangChain or frameworks: an async Python orchestrator runs Product Owner → Architect → QA, and each agent returns JSON validated with Pydantic (forced tool use on Claude, JSON Schema on OpenAI). When the output doesn't fit the schema, the agent retries once with the error in the prompt. Providers sit behind a one-method LLMProvider interface, so adding one is a single file.\n\nDeterministic validator with self-correction:\n\n10 checks in code, not in an LLM: every story has an endpoint, every endpoint has a test, every foreign key points to a real column, no duplicate routes or ids. Each issue names the agent that caused it, and the orchestrator re-runs only that agent and the ones that depend on it, for at most 2 rounds. The loop is visible live in the UI through Server-Sent Events.\n\nBuilt for real teams:\n\nA team context field (stack, conventions, constraints) that all three agents follow, refinement of any section with plain-language feedback, and export to Jira CSV, GitHub Issues, OpenAPI 3.1, a PostgreSQL DDL script (ordered by foreign keys, cycles handled), Markdown with an ER diagram, and re-importable JSON.\n\nPublic demo with controlled cost:\n\nFree runs limited per IP with a global daily cap, or the visitor's own key (Claude or OpenAI), which travels only with the request and is never stored; a log filter masks keys and tokens. The server is stateless: the result lives in the browser and is re-validated on every refine or export.\n\nQuality:\n\n127 tests (pytest and Vitest) that spend no tokens thanks to a FakeProvider, CI on GitHub Actions, an independent code review with its findings fixed, and a UI in light and dark mode, keyboard accessible and adapted to mobile.",
+      "metrics": [
+        {
+          "value": "4",
+          "label": "agents + validator"
+        },
+        {
+          "value": "10",
+          "label": "deterministic checks"
+        },
+        {
+          "value": "6",
+          "label": "export formats"
+        }
+      ]
+    },
     "choppi": {
       "title": "Choppi | Full-Stack Marketplace E-commerce",
       "description": "End-to-end marketplace e-commerce platform with a RESTful API in NestJS and a Next.js web app, simulating a real multi-store market.",
